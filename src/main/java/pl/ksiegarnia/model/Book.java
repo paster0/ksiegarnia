@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Book 
 {
+	//test
 	@Override
 	public String toString() {
 		return "Book [idksiazki=" + idksiazki + ", imieautora=" + imieautora + ", tytul=" + tytul + ", nazwiskoautora="
