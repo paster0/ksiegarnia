@@ -49,7 +49,6 @@
 
 
 <c:choose>
-
 <c:when test="${not empty sessionScope.user}">
 siema ${user.imie} </br>
 <a href="/ksiegarnia/user/logout">Wyloguj sie</a>

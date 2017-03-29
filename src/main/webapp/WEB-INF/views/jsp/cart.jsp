@@ -47,7 +47,7 @@
 
 
 
-	<div ng-controller="PController as vm">
+	<div id = "cont" ng-controller="PController as vm">
 		<h1>Koszyk zakupów</h1>
 
 		<table class="table table-hover">
@@ -89,36 +89,44 @@
 
 	</div>
 
-	<div id="logging">
-		<form method="post" action="\samochody\user\login">
+<c:choose>
+<c:when test="${not empty sessionScope.user}">
+siema ${user.imie} </br>
+<a href="/ksiegarnia/user/logout">Wyloguj sie</a>
+</c:when>
+<c:otherwise>
+		<div id="logging">
+			<form method="post" action="\ksiegarnia\user\login">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="2">Zaloguj sie</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Email</td>
+							<td><input type="text" name="mail" value="" /></td>
+						</tr>
+						<tr>
+							<td>Password</td>
+							<td><input type="password" name="haslo" value="" /></td>
+						</tr>
+						<tr>
+							<td><input type="submit" value="Login" /></td>
+							<td><input type="reset" value="Reset" /></td>
+						</tr>
+						<tr>
+							<td colspan="2">Nie masz konta? <a href="/ksiegarnia/user/reg">Zarejestruj
+									sie</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>	
+</div>
 
-			<table>
-				<thead>
-					<tr>
-						<th colspan="2">Zaloguj sie</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Email</td>
-						<td><input type="text" name="name" value="" /></td>
-					</tr>
-					<tr>
-						<td>Password</td>
-						<td><input type="password" name="haslo" value="" /></td>
-					</tr>
-					<tr>
-						<td><input type="submit" value="Login" /></td>
-						<td><input type="reset" value="Reset" /></td>
-					</tr>
-					<tr>
-						<td colspan="2">Nie masz konta? <a href="user/reg">Zarejestruj
-								sie</a></td>
-					</tr>
-				</tbody>
-			</table>
-		</form>
-	</div>
+</c:otherwise>
+</c:choose>
 
 	<!--  
  <h1>Book Store</h1>

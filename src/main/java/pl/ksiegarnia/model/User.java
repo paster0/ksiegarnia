@@ -17,14 +17,11 @@ public class User {
 	@GeneratedValue
 	@Column(name = "idklienta")
 	private Long id;
-	
 	private String imie;
 	private String nazwisko;
 	private String adres;
 	private String email;
 	private String haslo;
-	
-	
 	public String getHaslo() {
 		return haslo;
 	}
