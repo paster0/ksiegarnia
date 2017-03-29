@@ -45,11 +45,18 @@
 </div>
 
 <div id="DownContainer">
-		<div id="cont">tu jest content i juz</div>
+		<div id="cont">tu jest content</div>
 
+
+<c:choose>
+
+<c:when test="${not empty sessionScope.user}">
+siema ${user.imie} </br>
+<a href="/ksiegarnia/user/logout">Wyloguj sie</a>
+</c:when>
+<c:otherwise>
 		<div id="logging">
 			<form method="post" action="\ksiegarnia\user\login">
-
 				<table>
 					<thead>
 						<tr>
@@ -75,9 +82,11 @@
 						</tr>
 					</tbody>
 				</table>
-			</form>
-		</div>
+			</form>	
+</div>
 
+</c:otherwise>
+</c:choose>
 	</div>
 
 

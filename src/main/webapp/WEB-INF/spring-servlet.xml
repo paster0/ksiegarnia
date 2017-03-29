@@ -15,11 +15,10 @@
 		http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository-1.5.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
-
 	<!-- skanowanie komponentow -->
 	<context:component-scan base-package="pl.ksiegarnia" />
 
-	<!-- Bazy danych - start -->
+	<!-- JPA, hibernate - start -->
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
@@ -56,8 +55,7 @@
 	</bean>
 
 
-	<!-- Bazy danych - koniec -->
-
+	<!-- JPA, Hibernate - koniec -->
 
 
 	<bean id="validator"
@@ -140,14 +138,13 @@
 	</bean>
 	<bean name="logging" class="pl.ksiegarnia.aop.logExecution" />
 
-	
+
 	<aop:config>
 		<aop:aspect ref="logging">
 			<aop:before method="logExec"
 				pointcut="execution(* pl.ksiegarnia.repository.ProductRepository.get* (**))" />
 		</aop:aspect>
 	</aop:config>
-
 
 
 
