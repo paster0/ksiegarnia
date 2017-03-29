@@ -43,11 +43,7 @@
 		</ol>
 	</div>
 
-
-
-
-
-	<div id = "cont" ng-controller="PController as vm">
+	<div id = "cont" ng-controller="PController as vm" ng-init="init('${cartId}')">
 		<h1>Koszyk zakupów</h1>
 
 		<table class="table table-hover">
@@ -64,7 +60,7 @@
 				<td>{{item.quantity}}</td>
 				<td>{{item.totalPrice}}</td>
 				<td></td>
-				<td><a href="#" ng-click="usun(item.book.idksiazki)">usun</a></td>
+				<td><a href="#" ng-click="usun(item.book.idksiazki, '${cartId}')">usun</a></td>
 			</tr>
 			<tr>
 				<th></th>
@@ -79,9 +75,9 @@
 
 
 
-		<button ng-click="vm.ref('${cartId}')">Tutaj nie klikaj</button>
+		<button ng-click="ref('${cartId}')">Tutaj nie klikaj</button>
 		<form action="/ksiegarnia/order" method="get">
-			<input type="submit" value="Go to Google" />
+			<input type="submit" value="Zamawiam" />
 		</form>
 
 
