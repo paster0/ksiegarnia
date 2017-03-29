@@ -19,7 +19,6 @@
 	<!-- skanowanie komponentow -->
 	<context:component-scan base-package="pl.ksiegarnia" />
 
-
 	<!-- Bazy danych - start -->
 
 	<bean id="dataSource"

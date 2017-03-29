@@ -22,6 +22,14 @@ public class Order {
 	@OneToMany
 	@JoinColumn(name = "zamowienie_id")
 	List<OrderItem> orderItem;
+private double cena;
+	public double getCena() {
+	return cena;
+}
+
+public void setCena(double cena) {
+	this.cena = cena;
+}
 
 	public User getUser() {
 		return user;
