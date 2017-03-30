@@ -43,8 +43,10 @@ public class Cart {
 
 	public void updateGrandTotal() 
 	{
+		grandTotal=0;
 		for (CartItem item : cartItems.values()) {
-			grandTotal = grandTotal + item.getTotalPrice();
+	  //      System.out.println("grandtotal "+ grandTotal+" " + item);
+			grandTotal = grandTotal + (item.getTotalPrice());
 		}
 	}
 
@@ -53,6 +55,7 @@ public class Cart {
 		if (cartItems.containsKey(productId)) {
 			CartItem existingCartItem = cartItems.get(productId);
 			existingCartItem.setQuantity(existingCartItem.getQuantity() + item.getQuantity());
+			existingCartItem.setTotalPrice(existingCartItem.getQuantity()*existingCartItem.getBook().getCena());
 			cartItems.put(productId, existingCartItem);
 		} else {
 			cartItems.put(productId, item);
