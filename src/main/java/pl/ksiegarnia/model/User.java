@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 
@@ -17,11 +20,25 @@ public class User {
 	@GeneratedValue
 	@Column(name = "idklienta")
 	private Long id;
+@NotEmpty(message="pole nie moze byc puste")
 	private String imie;
+@NotEmpty(message="pole nie moze byc puste")
 	private String nazwisko;
+@NotEmpty(message="pole nie moze byc puste")
 	private String adres;
+@NotEmpty(message="pole nie moze byc puste")
 	private String email;
+@NotEmpty(message="pole nie moze byc puste")
 	private String haslo;
+	 @Transient
+	    private String retypeHaslo;
+	 
+	public String getRetypeHaslo() {
+		return retypeHaslo;
+	}
+	public void setRetypeHaslo(String retypeHaslo) {
+		this.retypeHaslo = retypeHaslo;
+	}
 	public String getHaslo() {
 		return haslo;
 	}

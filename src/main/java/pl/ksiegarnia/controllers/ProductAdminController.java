@@ -1,7 +1,4 @@
 package pl.ksiegarnia.controllers;
-
-
-
 import java.io.IOException;
 import java.util.List;
 
@@ -9,10 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,9 +28,8 @@ public class ProductAdminController {
 	@Autowired
 	ProductAdminService service;
 	
-	@Autowired
-	@Qualifier("tytulValidator")
-	private Validator validator;
+	//@Autowired
+//private Validator validator;
 	
 	
 	@RequestMapping(value = "")
@@ -58,13 +52,9 @@ public class ProductAdminController {
 	public ModelAndView addBookGet()
 
 	{
-		
 		ModelAndView modelAndView = new ModelAndView("addBook");
-
 		modelAndView.addObject("book", new Book.Builder().build());
-		
 	//	modelAndView.addObject("img", "img");
-		
 		return modelAndView;
 	}
 	
@@ -72,9 +62,9 @@ public class ProductAdminController {
 	public void dataBinding(WebDataBinder binder, HttpServletRequest req) 
 	{
 	//Book book = (Book)req.getSession().getAttribute("book");
-  //  binder.validate(book);
-//  binder.addValidators(validator);
-	binder.setValidator(validator);	
+   //  binder.validate(book);
+  //  binder.addValidators(validator);
+ //binder.setValidator(validator);	
 	}
 
 	@RequestMapping(value = "/product/addBook", method = RequestMethod.POST)
