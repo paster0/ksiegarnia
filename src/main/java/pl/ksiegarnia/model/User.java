@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
@@ -27,6 +28,7 @@ public class User {
 @NotEmpty(message="pole nie moze byc puste")
 	private String adres;
 @NotEmpty(message="pole nie moze byc puste")
+@Email(message = "nieprawidlowy adres email")
 	private String email;
 @NotEmpty(message="pole nie moze byc puste")
 	private String haslo;

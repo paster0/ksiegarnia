@@ -1,13 +1,14 @@
 package pl.ksiegarnia.repository;
 
 
-import org.hibernate.mapping.List;
+
+import java.util.List;
 
 import pl.ksiegarnia.model.User;
 
 public interface UserRepository
 {
-	public List getAllUsers();
+	public List<User> getAllUsers();
 	public void addUser(User user);
 	User loggin(String email);
 

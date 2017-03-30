@@ -1,14 +1,18 @@
 package pl.ksiegarnia.serviceImpl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.ksiegarnia.model.User;
+import pl.ksiegarnia.repository.UserRepository;
 import pl.ksiegarnia.service.UserAdminService;
 
 @Service
@@ -18,6 +22,8 @@ public class UserAdminServiceImpl implements UserAdminService {
 	EntityManager entityManager;
 	User user = new User();
 
+	@Autowired
+	UserRepository repository;
 	@Override
 	@Transactional
 	public void method()
@@ -38,6 +44,12 @@ public class UserAdminServiceImpl implements UserAdminService {
 		System.out.println(res.toString());
 		// quer123");
 		return false;
+	}
+
+	@Override
+	public List<User> GetuserList() {
+List<User> allUsers = repository.getAllUsers();
+		return allUsers;
 	}
 
 	/*
