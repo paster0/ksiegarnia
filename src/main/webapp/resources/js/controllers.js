@@ -30,10 +30,7 @@ angular.module('app').controller(
 				}
 
 				$scope.cartId = cartId;
-				$http.get('/ksiegarnia/rest/cart/' + $scope.cartId).success(
-						function(data) {
-							$scope.cart = data;
-						});
+				$scope.ref($scope.cartId);
 				
 			
 			}
@@ -42,12 +39,10 @@ angular.module('app').controller(
 				$scope.idksiazki = idksiazki;
 				$http.put('/ksiegarnia/rest/cart/remove/' + $scope.idksiazki)
 						.success(function(data) {
+							$scope.cartId = cartId;
+							$scope.ref($scope.cartId);
 						});
-				$scope.cartId = cartId;
-				$http.get('/ksiegarnia/rest/cart/' + $scope.cartId).success(
-						function(data) {
-							$scope.cart = data;
-						});
+			
 			}
 
 		});

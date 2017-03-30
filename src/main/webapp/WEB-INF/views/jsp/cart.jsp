@@ -16,8 +16,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 <script src="<c:url value="/resources/js/app.js" />"></script>
 <script src="<c:url value="/resources/js/controllers.js" />"></script>
-<script src="<c:url value="/resources/js/angular-resource.js" />"></script>
-
 <link href="<c:url value="/resources/css/welcome.css" />"
 	rel="stylesheet" />
 
