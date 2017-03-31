@@ -77,7 +77,8 @@
 		<form action="/ksiegarnia/order" method="get">
 			<input type="submit" value="Zamawiam" />
 		</form>
-
+		
+<h1>${blad}</h1>
 
 
 
