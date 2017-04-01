@@ -45,7 +45,8 @@ public class UserController
 	}
 
 	@RequestMapping("/login")
-	public String loggin(HttpServletRequest req) {
+	public ModelAndView loggin(HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView("welcome");
 		String mail = req.getParameter("mail");
 		String haslo = req.getParameter("haslo");
 		User user = service.loggin(mail, haslo);
@@ -55,7 +56,11 @@ public class UserController
 		HttpSession session = req.getSession();
 		session.setAttribute("user", user);
 		}
-		return "welcome";
+		else
+		{
+			mav.addObject("blad", "blad");
+		}
+		return mav;
 	}
 	
 	@RequestMapping("/reg")

@@ -26,22 +26,17 @@ public class UserAdminServiceImpl implements UserAdminService {
 	UserRepository repository;
 	@Override
 	@Transactional
-	public void method()
-	{
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String h = passwordEncoder.encode("123");
-		System.out.println(h);
-	// entityManager.persist(user);
-
-	}
-
+	
+	
+	
+/** This method check if logging user exist */
 	public boolean findUser() {
 		Query query = entityManager.createQuery("select k from User k where k.email LIKE :email AND k.haslo LIKE :has");
 		query.setParameter("email", "lukasz@gmail.com");
 		query.setParameter("has", "123");
 		// query.setParameter(0, "lukasz@gmail.com");
 		User res = (User) query.getSingleResult();
-		System.out.println(res.toString());
+		//System.out.println(res.toString());
 		// quer123");
 		return false;
 	}

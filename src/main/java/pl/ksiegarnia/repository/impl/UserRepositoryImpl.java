@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 
 import pl.ksiegarnia.model.User;
@@ -31,12 +32,17 @@ public class UserRepositoryImpl implements UserRepository
 	}
 
 	@Override
-	public User loggin(String email) {
+	public User loggin(String email) 
+	{try
+	{
 		Query query = entityManager.createQuery("select k from User k where k.email LIKE :email");
 		query.setParameter("email", email);
 		User res = (User) query.getSingleResult();
 		return res;
-		
+	}
+	catch (Exception e) {
+		return null;
+	}
 	}
 
 	@Transactional

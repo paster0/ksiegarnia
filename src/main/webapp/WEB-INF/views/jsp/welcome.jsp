@@ -76,6 +76,9 @@
 							<td><input type="reset" value="Reset" /></td>
 						</tr>
 						<tr>
+						${blad}
+						</tr>
+						<tr>
 							<td colspan="2">Nie masz konta? <a href="/ksiegarnia/user/reg">Zarejestruj
 									sie</a></td>
 						</tr>
