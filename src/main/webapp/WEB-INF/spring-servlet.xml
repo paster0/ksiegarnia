@@ -14,13 +14,12 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 		http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository-1.5.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
-
-
+	
+		
 	<!-- skanowanie komponentow -->
 	<context:component-scan base-package="pl.ksiegarnia" />
 
-	<!-- Bazy danych - start -->
-
+	<!-- JPA, hibernate - start -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		p:url="jdbc:mysql://localhost:3306/ksiegarnia" p:driverClassName="com.mysql.jdbc.Driver"
@@ -30,6 +29,7 @@
 	<bean id="JdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<constructor-arg ref="dataSource" />
 	</bean>
+	
 	<tx:annotation-driven />
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -56,8 +56,7 @@
 	</bean>
 
 
-	<!-- Bazy danych - koniec -->
-
+	<!-- JPA, Hibernate - koniec -->
 
 
 	<bean id="validator"
@@ -77,10 +76,8 @@
 	</bean>
 
 
-
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
-
 
 	<bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
@@ -140,15 +137,11 @@
 	</bean>
 	<bean name="logging" class="pl.ksiegarnia.aop.logExecution" />
 
-	
 	<aop:config>
 		<aop:aspect ref="logging">
 			<aop:before method="logExec"
 				pointcut="execution(* pl.ksiegarnia.repository.ProductRepository.get* (**))" />
 		</aop:aspect>
 	</aop:config>
-
-
-
 
 </beans>

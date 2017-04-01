@@ -1,11 +1,12 @@
 package pl.ksiegarnia.repository.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import org.hibernate.mapping.List;
 import org.springframework.stereotype.Repository;
 
 import pl.ksiegarnia.model.User;
@@ -20,9 +21,13 @@ public class UserRepositoryImpl implements UserRepository
 	EntityManager entityManager;
 
 	@Override
-	public List getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> getAllUsers() {
+		
+		Query query = entityManager.createQuery("select k from User k");
+		List<User> userList =  query.getResultList();
+				
+
+		return userList;
 	}
 
 	@Override

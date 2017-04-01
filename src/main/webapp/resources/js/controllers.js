@@ -1,8 +1,13 @@
 angular.module('app').controller(
 		'PController',
 		function($http, $scope) {
-			$scope.cart = 'pusto';
-			this.ref = function(cartId) {
+			$scope.init = function(cartId) {
+				$scope.cartId=cartId;
+				$scope.ref($scope.cartId);
+				};
+			
+			$scope.ref = function(cartId)
+			{
 				$scope.cartId = cartId;
 				$http.get('/ksiegarnia/rest/cart/' + $scope.cartId).success(
 						function(data) {
@@ -24,13 +29,20 @@ angular.module('app').controller(
 							});
 				}
 
+				$scope.cartId = cartId;
+				$scope.ref($scope.cartId);
+				
+			
 			}
 
-			$scope.usun = function(idksiazki) {
+			$scope.usun = function(idksiazki, cartId) {
 				$scope.idksiazki = idksiazki;
 				$http.put('/ksiegarnia/rest/cart/remove/' + $scope.idksiazki)
 						.success(function(data) {
+							$scope.cartId = cartId;
+							$scope.ref($scope.cartId);
 						});
+			
 			}
 
 		});

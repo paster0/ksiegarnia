@@ -12,15 +12,12 @@
 <html>
 <head>
 <meta charset="utf-8" />
-
 <!-- 
 <spring:url value="/resources/css/welcome.css" var="coreCss" />
 <link href="${coreCss}" rel="stylesheet" />
 <link rel="/resources/css/welcome.css" href="welcome.css"> -->
 <link href="<c:url value="/resources/css/welcome.css" />"
 	rel="stylesheet" />
-
-
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
@@ -45,6 +42,11 @@
 				<td><form:label  path="haslo">haslo</form:label></td>
 				<td><form:password   path="haslo" /></td>
 				<td><form:errors path="haslo" cssStyle="color: red;"></form:errors></td>
+			</tr>
+				<tr>
+				<td><form:label  path="retypeHaslo">powtorz haslo</form:label></td>
+				<td><form:password   path="retypeHaslo" /></td>
+				<td><form:errors path="retypeHaslo" cssStyle="color: red;"></form:errors></td>
 			</tr>
 			<tr>
 				<td><form:label path="imie">imie</form:label></td>

@@ -2,10 +2,15 @@ package pl.ksiegarnia.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +28,16 @@ public class UserController
 	@Autowired
 	UserService service;
 
+	@Autowired
+	@Qualifier("userValidator")
+	private Validator validator;
+	@InitBinder
+	public void dataBinding(WebDataBinder binder) {
+		binder.addValidators(validator);
+	
+	} 
+	
+	
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
@@ -45,18 +60,18 @@ public class UserController
 	
 	@RequestMapping("/reg")
 	public ModelAndView reg(HttpServletRequest req) {
-		
 		ModelAndView modelAndView = new ModelAndView("register");
-
-		modelAndView.addObject("User", new User());
-	
+		modelAndView.addObject("User", new User());	
 		return modelAndView;
 	}
 	@RequestMapping(value = "/reg", method = RequestMethod.POST)
-	public String addBookPost(@ModelAttribute("User")  User user,  BindingResult result, HttpServletRequest req)
+	public String addBookPost(@ModelAttribute("User") @Valid  User user,  BindingResult result, HttpServletRequest req)
 	{
+		 if(result.hasErrors()) {
+		    	return "register";
+		    }
 		
-service.addUser(user);
+        service.addUser(user);
 		return "welcome";
 		//return "redirect:/";
 	}

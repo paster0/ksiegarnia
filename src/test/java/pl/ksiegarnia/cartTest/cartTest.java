@@ -78,9 +78,55 @@ public class cartTest {
 		cart.setCartItems(cI);
 		cart.updateGrandTotal();
 		
+		//sprawdzanie zgodnosci ceny w koszyku po operacjach dodawaniu i usuwaniu CartItem
+        //System.out.println("grandTotal = "+ grandTotal+" cartGrandTotal = "+ cart.getGrandTotal());		
+		Assert.assertTrue(grandTotal==cart.getGrandTotal());
+		
+     //System.out.println(cI.get("1"));
+		cart.removeCartItem(cartItem[0]);
+		grandTotal = grandTotal - cartItem[0].getTotalPrice();
+
 		Assert.assertTrue(grandTotal==cart.getGrandTotal());
 
-	//	Assert.assertEquals(message, expected, actual, delta);
+		
+		cart.addCartItem(cartItem[0]);
+
+		grandTotal = grandTotal + books[0].getCena();
+		
+
+	cart.addCartItem(cartItem[0]);
+	grandTotal = grandTotal + books[0].getCena();
+	Assert.assertTrue(grandTotal==cart.getGrandTotal());
+	
+	//dodanie po raz drugi istniejacej ksiazki
+	cartItem[1] = new CartItem(books[1]);
+	cart.addCartItem(cartItem[1]);
+	grandTotal = grandTotal + books[1].getCena();
+	//System.out.println("cartGrandTotal = " +cart.getGrandTotal()+" grandTotal = "+grandTotal);
+	Assert.assertTrue(grandTotal==cart.getGrandTotal());	
+	
+	//dodanie nowej ksiazki
+	Book book1 = new Book.Builder().idksiazki(9).tutyl("test").cena(444).build();
+	CartItem cartTestItem = new CartItem(book1);
+	grandTotal = grandTotal + book1.getCena();
+	cart.addCartItem(cartTestItem);
+	Assert.assertTrue(grandTotal==cart.getGrandTotal());
+	
+	
+	//usuniecie powyzszej ksiazki
+	cart.removeCartItem(cartTestItem);
+	grandTotal = grandTotal - book1.getCena();
+	Assert.assertTrue(grandTotal==cart.getGrandTotal());
+
+	
+	
+
+
+
+
+
+
+
 
 	}
 

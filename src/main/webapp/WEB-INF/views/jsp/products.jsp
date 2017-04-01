@@ -62,9 +62,9 @@
 </div>
 
 <div id="DownContainer">
-	<div class="cont" ng-controller="PController as vm">
+	<div id="cont" ng-controller="PController as vm">
 		<c:forEach items="${lista.getBookList()}" var="list">
-			<div class="product">
+			<div class = "product">
 				<h3>${list.nazwiskoautora}</h3>
 				<p>${list.tytul}</p>
 				<img style="width: 120px; height: 150px;"
@@ -80,9 +80,14 @@
 
 		</c:forEach>
 	</div>
+	<c:choose>
+<c:when test="${not empty sessionScope.user}">
+<div id="logging">siema ${user.imie} </br>
+<a href="/ksiegarnia/user/logout">Wyloguj sie</a></div>
+</c:when>
+<c:otherwise>
 		<div id="logging">
-			<form method="post" action="\samochody\user\login">
-
+			<form method="post" action="\ksiegarnia\user\login">
 				<table>
 					<thead>
 						<tr>
@@ -92,7 +97,7 @@
 					<tbody>
 						<tr>
 							<td>Email</td>
-							<td><input type="text" name="name" value="" /></td>
+							<td><input type="text" name="mail" value="" /></td>
 						</tr>
 						<tr>
 							<td>Password</td>
@@ -103,13 +108,15 @@
 							<td><input type="reset" value="Reset" /></td>
 						</tr>
 						<tr>
-							<td colspan="2">Nie masz konta? <a href="user/reg">Zarejestruj
+							<td colspan="2">Nie masz konta? <a href="/ksiegarnia/user/reg">Zarejestruj
 									sie</a></td>
 						</tr>
 					</tbody>
 				</table>
-			</form>
-		</div>
+			</form>	
+</div>
+</c:otherwise>
+</c:choose>
 
 
 
