@@ -17,7 +17,7 @@ public class Book
 	@Override
 	public String toString() {
 		return "Book [idksiazki=" + idksiazki + ", imieautora=" + imieautora + ", tytul=" + tytul + ", nazwiskoautora="
-				+ nazwiskoautora + ", img=" + img + ", cena=" + cena + ", ilosc=" + ilosc + "]";
+				+ nazwiskoautora + ", cena=" + cena + ", ilosc=" + ilosc + "]";
 	}
 
 	@Id
@@ -26,7 +26,6 @@ public class Book
 	private String imieautora; 
 	private String tytul;
 	private String nazwiskoautora;
-	private String img;
 	private float cena;	
     private int ilosc;
 
@@ -72,12 +71,7 @@ public class Book
 	}
 
 	
-	public void setImg(String img) {
-		this.img = img;
-	}
-	public String getImg() {
-		return img;
-	}
+	
 	
 	
 	@XmlElement
