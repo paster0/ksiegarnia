@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 
 import pl.ksiegarnia.model.User;
@@ -22,6 +21,7 @@ public class UserRepositoryImpl implements UserRepository
 	EntityManager entityManager;
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<User> getAllUsers() {
 		
 		Query query = entityManager.createQuery("select k from User k");

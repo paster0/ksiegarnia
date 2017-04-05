@@ -24,6 +24,12 @@
 
 </head>
 <body>
+<ol>
+<li><a href="#">zarządzanie książkami</a></li>
+<li><a href="#">zarzadzanie zamowieniami</a></li>
+<li><a href="#">zarzadznie uzytkownikami</a></li>
+
+</ol>
 	<div class="row">
 		<c:forEach items="${lista}" var="list">
 			<div class="product">
@@ -38,6 +44,7 @@
 			</div>
 		</c:forEach>
 	</div>
+	
 	
 	
 

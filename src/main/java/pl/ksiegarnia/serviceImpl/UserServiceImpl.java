@@ -24,7 +24,7 @@ try{
 		boolean matches = passwordEncoder.matches(haslo, user.getHaslo());
 		if (matches) {
 
-			System.out.println("znalazlem cie");
+		//	System.out.println("znalazlem cie");
 			return user;
 		}}
 catch (Exception e) {

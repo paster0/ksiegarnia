@@ -15,7 +15,6 @@
 		http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository-1.5.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 	
-		
 	<!-- skanowanie komponentow -->
 	<context:component-scan base-package="pl.ksiegarnia" />
 

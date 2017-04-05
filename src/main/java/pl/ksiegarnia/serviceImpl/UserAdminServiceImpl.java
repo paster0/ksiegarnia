@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,7 +34,7 @@ public class UserAdminServiceImpl implements UserAdminService {
 		query.setParameter("email", "lukasz@gmail.com");
 		query.setParameter("has", "123");
 		// query.setParameter(0, "lukasz@gmail.com");
-		User res = (User) query.getSingleResult();
+		//User res = (User) query.getSingleResult();
 		//System.out.println(res.toString());
 		// quer123");
 		return false;
