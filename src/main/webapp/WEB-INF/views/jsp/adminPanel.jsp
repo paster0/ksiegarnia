@@ -24,27 +24,38 @@
 
 </head>
 <body>
+
+<div id="TopContainer">
+			<div id="top">
+					<a href=/ksiegarnia>
+			
+				<img height="300px" name="obrazek"
+					src="<c:url value="/resources/img/books.png" />">
+					</a>
+			
+			</div>
+			<div id="title">Bardzo fajna ksiegarnia</div>
+	
+		<div id="koszyk">
+			<a href="/ksiegarnia/cart"> koszyk zakupów </a>
+		</div>
+
+		<div style="clear: both;"></div>
+		
+		<div id="menu">
+			<ol>
+				<li><a href=/ksiegarnia/admin/product>zarządzanie książkami</a></li>
+				<li><a href=/ksiegarnia>zarządzanie zamowieniami</a></li>
+				<li><a href=/ksiegarnia/product>zarzadznie uzytkownikami</a></li>
+				
+			</ol>
+		</div>
+</div>
 <ol>
-<li><a href="#">zarządzanie książkami</a></li>
-<li><a href="#">zarzadzanie zamowieniami</a></li>
-<li><a href="#">zarzadznie uzytkownikami</a></li>
+
 
 </ol>
-	<div class="row">
-		<c:forEach items="${lista}" var="list">
-			<div class="product">
-				<h3>${list.nazwiskoautora}</h3>
-				<p>${list.tytul}</p>
-				<img style ="width: 120px; height: 150px; " src='<c:url value="resources/img/${list.idksiazki}.jpg"></c:url>'/>		
-				<p>${list.cena}PLN</p>
-				<p>ilosc: ${list.ilosc}</p>
-				<form action="/ksiegarnia/admin/drop" method="post">
-					<input type="hidden" name="id" value="${list.idksiazki}" />  <input type="submit" value="usun"></input>
-				</form>
-			</div>
-		</c:forEach>
-	</div>
-	
+
 	
 	
 

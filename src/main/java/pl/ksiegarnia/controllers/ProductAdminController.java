@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import pl.ksiegarnia.model.Book;
 import pl.ksiegarnia.service.ProductAdminService;
+import pl.ksiegarnia.service.ProductUserService;
 
 
 @Controller
@@ -27,6 +28,8 @@ public class ProductAdminController {
 
 	@Autowired
 	ProductAdminService service;
+	@Autowired
+	ProductUserService uservice;
 	
 	//@Autowired
 //private Validator validator;
@@ -35,8 +38,8 @@ public class ProductAdminController {
 	@RequestMapping(value = "")
 	public ModelAndView hellolWorld()
 	{
-		List<Book> list = service.getAll();
-		return new ModelAndView("adminPanel", "lista", list);
+
+		return new ModelAndView("adminPanel");
 	}
 	
 	
@@ -93,8 +96,30 @@ public class ProductAdminController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value = "/product")
+	public ModelAndView products()
+	{
+		List<Book> list = service.getAll();
+		return new ModelAndView("adminBook", "lista", list);
+	}
+	@RequestMapping(value = "/product/update", method = RequestMethod.POST)
+	public ModelAndView updateBook(HttpServletRequest req)
+	{
+		String idksiazki = req.getParameter("id");
+		req.getSession().setAttribute("id", idksiazki);
+		Book book = uservice.getBookbyId(Integer.valueOf(idksiazki));
+		return new ModelAndView("updateBook", "book", book);
+	}
 	
-
+	@RequestMapping(value = "/product/update/add", method = RequestMethod.POST)
+	public ModelAndView updateBookPost(@Valid @ModelAttribute("book")  Book book, HttpServletRequest req)
+	{
+		System.out.println(book.toString());
+		String idksiazki = req.getParameter("id");
+		//Book book = uservice.getBookbyId(Integer.valueOf(idksiazki));
+		return new ModelAndView("updateBook");
+	}
+	
 	
 
 }
