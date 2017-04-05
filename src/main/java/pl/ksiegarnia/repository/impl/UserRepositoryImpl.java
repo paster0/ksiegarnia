@@ -21,6 +21,7 @@ public class UserRepositoryImpl implements UserRepository
 	EntityManager entityManager;
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<User> getAllUsers() {
 		
 		Query query = entityManager.createQuery("select k from User k");
@@ -31,12 +32,17 @@ public class UserRepositoryImpl implements UserRepository
 	}
 
 	@Override
-	public User loggin(String email) {
+	public User loggin(String email) 
+	{try
+	{
 		Query query = entityManager.createQuery("select k from User k where k.email LIKE :email");
 		query.setParameter("email", email);
 		User res = (User) query.getSingleResult();
 		return res;
-		
+	}
+	catch (Exception e) {
+		return null;
+	}
 	}
 
 	@Transactional

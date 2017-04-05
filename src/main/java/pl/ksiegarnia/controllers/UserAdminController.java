@@ -16,14 +16,7 @@ public class UserAdminController
 	@Autowired
 	UserAdminService service;
 	
-	@RequestMapping(value = "/users")
-	public String getUsers()
-	{
-		
-		service.method();
-		//service.findUser();
-		return "adminPanel";
-	}
+
 	
 
 }
