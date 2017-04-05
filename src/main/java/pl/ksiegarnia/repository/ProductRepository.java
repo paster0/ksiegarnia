@@ -12,4 +12,5 @@ public interface ProductRepository
 	public void dropBookFromList(Book book);
 	public void zmniejsz(int id, int ilosc);
 	public int getIdFromProduct(String imieautora, String nazwiskoautora, String tytul, float cena, int ilosc);
+	public void updateBook(Book book);
 }

@@ -1,4 +1,5 @@
 package pl.ksiegarnia.controllers;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -21,7 +22,6 @@ import pl.ksiegarnia.model.Book;
 import pl.ksiegarnia.service.ProductAdminService;
 import pl.ksiegarnia.service.ProductUserService;
 
-
 @Controller
 @RequestMapping(value = "/admin")
 public class ProductAdminController {
@@ -30,96 +30,82 @@ public class ProductAdminController {
 	ProductAdminService service;
 	@Autowired
 	ProductUserService uservice;
-	
-	//@Autowired
-//private Validator validator;
-	
-	
+
+	// @Autowired
+	// private Validator validator;
+
 	@RequestMapping(value = "")
-	public ModelAndView hellolWorld()
-	{
+	public ModelAndView hellolWorld() {
 
 		return new ModelAndView("adminPanel");
 	}
-	
-	
+
 	@RequestMapping(value = "/drop", method = RequestMethod.POST)
-	public  String drop(HttpServletRequest req)
-	{
-	String idksiazki = req.getParameter("id");
-	int id = Integer.valueOf(idksiazki);
-	service.dropBookFromList(id);
+	public String drop(HttpServletRequest req) {
+		String idksiazki = req.getParameter("id");
+		int id = Integer.valueOf(idksiazki);
+		service.dropBookFromList(id);
 		return "redirect:/admin";
 	}
+
 	@RequestMapping("/product/addBook")
 	public ModelAndView addBookGet()
 
 	{
 		ModelAndView modelAndView = new ModelAndView("addBook");
 		modelAndView.addObject("book", new Book.Builder().build());
-	//	modelAndView.addObject("img", "img");
+		// modelAndView.addObject("img", "img");
 		return modelAndView;
 	}
-	
+
 	@InitBinder
-	public void dataBinding(WebDataBinder binder, HttpServletRequest req) 
-	{
-	//Book book = (Book)req.getSession().getAttribute("book");
-   //  binder.validate(book);
-  //  binder.addValidators(validator);
- //binder.setValidator(validator);	
+	public void dataBinding(WebDataBinder binder, HttpServletRequest req) {
+		// Book book = (Book)req.getSession().getAttribute("book");
+		// binder.validate(book);
+		// binder.addValidators(validator);
+		// binder.setValidator(validator);
 	}
 
 	@RequestMapping(value = "/product/addBook", method = RequestMethod.POST)
-	public String addBookPost(@Valid @ModelAttribute("book")  Book book,  BindingResult result, HttpServletRequest req)
-	{
-		if(result.hasErrors())
-		{
+	public String addBookPost(@Valid @ModelAttribute("book") Book book, BindingResult result, HttpServletRequest req) {
+		if (result.hasErrors()) {
 			System.out.println(result.getAllErrors());
-		return "addBook";
+			return "addBook";
 		}
 		req.getSession().setAttribute("book", book);
 		return "uploadform";
-		//return "redirect:/";
+		// return "redirect:/";
 	}
-	
-	
-	
-	@RequestMapping(value = "/product/addBook/addimg", headers = ("content-type=multipart/*"),
-			method = RequestMethod.POST)
+
+	@RequestMapping(value = "/product/addBook/addimg", headers = ("content-type=multipart/*"), method = RequestMethod.POST)
 	public String addBook(@RequestParam MultipartFile file, HttpServletRequest req) throws IOException {
 		// System.out.println(file.getOriginalFilename());
-		Book book = (Book)req.getSession().getAttribute("book");
+		Book book = (Book) req.getSession().getAttribute("book");
 		service.dodaj(book);
 		String realPatch = req.getSession().getServletContext().getRealPath("");
-		service.addImg(file, book, realPatch);	
+		service.addImg(file, book, realPatch);
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping(value = "/product")
-	public ModelAndView products()
-	{
+	public ModelAndView products() {
 		List<Book> list = service.getAll();
 		return new ModelAndView("adminBook", "lista", list);
 	}
+
 	@RequestMapping(value = "/product/update", method = RequestMethod.POST)
-	public ModelAndView updateBook(HttpServletRequest req)
-	{
+	public ModelAndView updateBook(HttpServletRequest req) {
 		String idksiazki = req.getParameter("id");
 		req.getSession().setAttribute("id", idksiazki);
 		Book book = uservice.getBookbyId(Integer.valueOf(idksiazki));
 		return new ModelAndView("updateBook", "book", book);
 	}
-	
+
 	@RequestMapping(value = "/product/update/add", method = RequestMethod.POST)
-	public ModelAndView updateBookPost(@Valid @ModelAttribute("book")  Book book, HttpServletRequest req)
-	{
-		System.out.println(book.toString());
-		String idksiazki = req.getParameter("id");
-		//Book book = uservice.getBookbyId(Integer.valueOf(idksiazki));
-		return new ModelAndView("updateBook");
+	public ModelAndView updateBookPost(@Valid @ModelAttribute("book") Book book, HttpServletRequest req) {
+		int idksiazki = Integer.valueOf((String) req.getSession().getAttribute("id"));
+		service.updateBook(idksiazki, book);
+		return new ModelAndView("welcome");
 	}
-	
-	
 
 }

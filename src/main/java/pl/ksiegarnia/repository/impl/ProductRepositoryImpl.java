@@ -87,4 +87,13 @@ public class ProductRepositoryImpl implements ProductRepository
 		
 	}
 
+
+	@Override
+	public void updateBook(Book book) 
+	{
+		jdbcTemplate.update("UPDATE ksiazki SET cena=?, ilosc=?, imieautora=?, nazwiskoautora=?, tytul = ? WHERE idksiazki = ?", book.getCena(),
+				book.getIlosc(), book.getImieautora(), book.getNazwiskoautora(), book.getTytul(), book.getIdksiazki());
+
+	}
+
 }
