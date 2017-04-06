@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public User loggin(String email, String haslo) {
 try{
-		User user = repository.loggin(email);
+		User user = repository.findByEmail(email);
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		boolean matches = passwordEncoder.matches(haslo, user.getHaslo());
 		if (matches) {
@@ -42,7 +42,7 @@ return null;
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
 		String h = passwordEncoder.encode(user.getHaslo());
 		user.setHaslo(h);
-		repository.addUser(user);
+		repository.save(user);
 
 	}
 

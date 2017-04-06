@@ -2,14 +2,14 @@ package pl.ksiegarnia.repository;
 
 
 
-import java.util.List;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import pl.ksiegarnia.model.User;
 
-public interface UserRepository
+@Repository
+public interface UserRepository extends CrudRepository<User, Long>
 {
-	public List<User> getAllUsers();
-	public void addUser(User user);
-	User loggin(String email);
+public User findByEmail(String email);
 
 }

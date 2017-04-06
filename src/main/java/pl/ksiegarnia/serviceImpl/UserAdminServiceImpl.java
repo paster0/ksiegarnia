@@ -42,7 +42,7 @@ public class UserAdminServiceImpl implements UserAdminService {
 
 	@Override
 	public List<User> GetuserList() {
-List<User> allUsers = repository.getAllUsers();
+List<User> allUsers = (List<User>) repository.findAll();
 		return allUsers;
 	}
 

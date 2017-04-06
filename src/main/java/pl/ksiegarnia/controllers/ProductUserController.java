@@ -25,10 +25,7 @@ public class ProductUserController {
 
 	@Autowired
 	ProductUserService service;
-	
-	
-	
-	//@Autowired
+		//@Autowired
 	//TytulValidator tytulValidator;
 	
 	
@@ -98,7 +95,6 @@ public class ProductUserController {
 	{
 		String id = req.getParameter("id");
 		String ilosc = req.getParameter("ilosc");
-		
 		service.kup(Integer.valueOf(id), Integer.valueOf(ilosc));
 		return "redirect:/product";
 	}

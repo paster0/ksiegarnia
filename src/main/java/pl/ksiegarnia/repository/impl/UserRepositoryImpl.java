@@ -12,15 +12,15 @@ import org.springframework.stereotype.Repository;
 import pl.ksiegarnia.model.User;
 import pl.ksiegarnia.repository.UserRepository;
 
-@Repository
-public class UserRepositoryImpl implements UserRepository
+//@Repository
+public class UserRepositoryImpl 
 {
 	
 	
 	@PersistenceContext
 	EntityManager entityManager;
 
-	@Override
+	//@Override
 	@SuppressWarnings("unchecked")
 	public List<User> getAllUsers() {
 		
@@ -31,7 +31,7 @@ public class UserRepositoryImpl implements UserRepository
 		return userList;
 	}
 
-	@Override
+	//@Override
 	public User loggin(String email) 
 	{try
 	{
