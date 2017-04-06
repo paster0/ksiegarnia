@@ -5,6 +5,6 @@ import pl.ksiegarnia.model.User;
 
 public interface OrderService {
 	
-	public void addOrder(Cart cart, User user);
+	public boolean addOrder(Cart cart, User user);
 
 }

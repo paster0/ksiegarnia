@@ -7,10 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import org.springframework.stereotype.Repository;
-
 import pl.ksiegarnia.model.User;
-import pl.ksiegarnia.repository.UserRepository;
 
 //@Repository
 public class UserRepositoryImpl 

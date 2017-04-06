@@ -5,8 +5,7 @@ public class logExecution
 	
 	public void logExec()
 	{
-	//	System.out.println("syso dzialuje");
-	//	Logger.getLogger(getClass().getName()).info("ghahahahahahahaha");
+	//	System.out.println("dziala");
 	}
 
 }

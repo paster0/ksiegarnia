@@ -22,24 +22,34 @@ public class OrderServiceImpl implements OrderService {
 	OrderRepository repository;
 
 	@Override
-	public void addOrder(Cart cart, User user) {
+	public boolean addOrder(Cart cart, User user) {
 
 		Order order = new Order();
 		List<OrderItem> oItems = new ArrayList<OrderItem>();
 		Map<String, CartItem> cartItems = cart.getCartItems();
 		int ii = cartItems.size();
-for(int i = 1; i<(ii+1); i++)
-{
-	CartItem cartItem = cartItems.get(String.valueOf(i));
-OrderItem orderItem = new OrderItem(cartItem.getQuantity(), cartItem.getBook());
-oItems.add(orderItem);
+		for (int i = 1; i < (ii + 1); i++) 
+		{
+			CartItem cartItem = cartItems.get(String.valueOf(i));
+			OrderItem orderItem = new OrderItem(cartItem.getQuantity(), cartItem.getBook());
+			oItems.add(orderItem);
+
+		}
+		order.setOrderItem(oItems);
+		order.setUser(user);
+		order.setUwagi("brak");
+		for(OrderItem ci: oItems)
+		{
+			if(ci.getBook().getIlosc()<ci.getIlosc())
+			{
+				return false;
+			}
+		}
 	
-}
-order.setOrderItem(oItems);
-order.setUser(user);
-order.setUwagi("brak");
-repository.addOrder(order, oItems);
-	//	repository.addOrder(order, orderItems);
+		repository.addOrder(order, oItems);
+		
+		return true;
+		// repository.addOrder(order, orderItems);
 	}
 
 }
