@@ -23,6 +23,8 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public boolean addOrder(Cart cart, User user) {
+		
+		double cena = 0;
 
 		Order order = new Order();
 		List<OrderItem> oItems = new ArrayList<OrderItem>();
@@ -31,13 +33,12 @@ public class OrderServiceImpl implements OrderService {
 		for (int i = 1; i < (ii + 1); i++) 
 		{
 			CartItem cartItem = cartItems.get(String.valueOf(i));
+			cena += cartItem.getTotalPrice();
 			OrderItem orderItem = new OrderItem(cartItem.getQuantity(), cartItem.getBook());
 			oItems.add(orderItem);
 
 		}
-		order.setOrderItem(oItems);
-		order.setUser(user);
-		order.setUwagi("brak");
+	
 		for(OrderItem ci: oItems)
 		{
 			if(ci.getBook().getIlosc()<ci.getIlosc())
@@ -45,7 +46,11 @@ public class OrderServiceImpl implements OrderService {
 				return false;
 			}
 		}
-	
+		order.setOrderItem(oItems);
+		order.setUser(user);
+		order.setUwagi("brak");
+		order.setCena(cena);
+		
 		repository.addOrder(order, oItems);
 		
 		return true;

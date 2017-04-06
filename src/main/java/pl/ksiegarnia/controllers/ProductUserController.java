@@ -84,7 +84,7 @@ public class ProductUserController {
 	public ModelAndView CatControl(@PathVariable("category") String category) {
 		ModelAndView modelAndView = new ModelAndView("products");
 		List<Book> book = service.GetBooksbyCategory(category);
-		System.out.println(book);
+	//	System.out.println(book);
 		modelAndView.addObject("lista", book);
 
 		return modelAndView;

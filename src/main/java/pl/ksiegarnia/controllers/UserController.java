@@ -52,7 +52,7 @@ public class UserController
 		User user = service.loggin(mail, haslo);
 		if(user!=null)
 		{
-		System.out.println(user.toString());
+	//	System.out.println(user.toString());
 		HttpSession session = req.getSession();
 		session.setAttribute("user", user);
 		}
