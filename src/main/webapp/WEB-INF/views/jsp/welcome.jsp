@@ -28,7 +28,7 @@
 		<div class="page-header row">
 
 			<div class="pull-left">
-				<a href=/ksiegarnia> <img class="img-thumbnail"
+				<a href=/ksiegarnia> <img class="img-rounded"
 					src="<c:url value="/resources/img/books.png" />" width="304"
 					height="236">
 				</a>
@@ -43,10 +43,6 @@
 			</div>
 		</div>
 		<div>
-
-			
-
-
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
 					<div class="navbar-header">
