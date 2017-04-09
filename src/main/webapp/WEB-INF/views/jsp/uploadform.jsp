@@ -13,11 +13,7 @@
 <head>
 <meta charset="utf-8" />
 
-<!-- 
-<spring:url value="/resources/css/welcome.css" var="coreCss" />
-<link href="${coreCss}" rel="stylesheet" />
-<link rel="/resources/css/welcome.css" href="welcome.css"> -->
-<link href="<c:url value="/resources/css/welcome.css" />"
+<link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" />
 
 
@@ -31,19 +27,41 @@
 </head>
 <body>
 
-	
+	<div class="container">
+
+		<div class="page-header row">
+
+			<div class="pull-left">
+				<a href=/ksiegarnia> <img class="img-rounded"
+					src="<c:url value="/resources/img/books.png" />" width="304"
+					height="236">
+				</a>
+			</div>
+			<h1 class="text-center jumbotron vertical-center">Ksiegarnia</h1>
+
+			<div class="pull-right">
+
+				<a href="/ksiegarnia/cart"> Koszyk zakupów <span
+					class="glyphicon glyphicon-shopping-cart"></span></a>
+
+			</div>
+		</div>
+
+
 
 	<form:form action="/ksiegarnia/admin/product/addBook/addimg"
 		enctype="multipart/form-data" method="POST">
       Please select a file to upload : 
       <input type="file" name="file" />
-		
+
 		<input type="submit" value="upload" />
 	</form:form>
-<FORM><INPUT Type="button" VALUE="Wstecz"
-		 onClick="history.go(-1);return true;"></FORM>
+	<FORM>
+		<INPUT Type="button" VALUE="Wstecz"
+			onClick="history.go(-1);return true;">
+	</FORM>
 
-
+</div>
 
 
 

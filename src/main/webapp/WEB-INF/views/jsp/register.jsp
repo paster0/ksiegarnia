@@ -12,11 +12,8 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<!-- 
-<spring:url value="/resources/css/welcome.css" var="coreCss" />
-<link href="${coreCss}" rel="stylesheet" />
-<link rel="/resources/css/welcome.css" href="welcome.css"> -->
-<link href="<c:url value="/resources/css/welcome.css" />"
+
+<link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -28,50 +25,83 @@
 </head>
 <body>
 
-	
+	<div class="container">
 
-	<form:form method="POST" action="/ksiegarnia/user/reg"
-		modelAttribute="User">
-		<table>
-			<tr>
-				<td><form:label path="email">email</form:label></td>
-				<td><form:input path="email" /></td>
-				<td><form:errors path="email" cssStyle="color: red;"></form:errors></td>
-			</tr>
-			<tr>
-				<td><form:label  path="haslo">haslo</form:label></td>
-				<td><form:password   path="haslo" /></td>
-				<td><form:errors path="haslo" cssStyle="color: red;"></form:errors></td>
-			</tr>
+		<div class="page-header row">
+
+			<div class="pull-left">
+				<a href=/ksiegarnia> <img class="img-rounded"
+					src="<c:url value="/resources/img/books.png" />" width="304"
+					height="236">
+				</a>
+			</div>
+			<h1 class="text-center jumbotron vertical-center">Ksiegarnia</h1>
+
+			<div class="pull-right">
+
+				<a href="/ksiegarnia/cart"> Koszyk zakupów <span
+					class="glyphicon glyphicon-shopping-cart"></span></a>
+
+			</div>
+		</div>
+	<div>
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">Nawigacja</a>
+					</div>
+					<ul class="nav navbar-nav">
+						<li><a href="/ksiegarnia">Strona główna</a></li>
+						<li><a href="/ksiegarnia/product">Zobacz książki</a></li>
+						<li><a href="#">O nas</a></li>
+					</ul>
+				</div>
+			</nav>
+
+
+		<form:form method="POST" action="/ksiegarnia/user/reg"
+			modelAttribute="User">
+			<table class="table table-hover">
 				<tr>
-				<td><form:label  path="retypeHaslo">powtorz haslo</form:label></td>
-				<td><form:password   path="retypeHaslo" /></td>
-				<td><form:errors path="retypeHaslo" cssStyle="color: red;"></form:errors></td>
-			</tr>
-			<tr>
-				<td><form:label path="imie">imie</form:label></td>
-				<td><form:input path="imie" /></td>
-				<td><form:errors path="imie" cssStyle="color: red;"></form:errors></td>
+					<td><form:label path="email">email</form:label></td>
+					<td><form:input path="email" /></td>
+					<td><form:errors path="email" cssStyle="color: red;"></form:errors></td>
+				</tr>
+				<tr>
+					<td><form:label path="haslo">haslo</form:label></td>
+					<td><form:password path="haslo" /></td>
+					<td><form:errors path="haslo" cssStyle="color: red;"></form:errors></td>
+				</tr>
+				<tr>
+					<td><form:label path="retypeHaslo">powtorz haslo</form:label></td>
+					<td><form:password path="retypeHaslo" /></td>
+					<td><form:errors path="retypeHaslo" cssStyle="color: red;"></form:errors></td>
+				</tr>
+				<tr>
+					<td><form:label path="imie">imie</form:label></td>
+					<td><form:input path="imie" /></td>
+					<td><form:errors path="imie" cssStyle="color: red;"></form:errors></td>
 
-			</tr>
+				</tr>
 
-			<tr>
-				<td><form:label path="nazwisko">nazwisko</form:label></td>
-				<td><form:input path="nazwisko" /></td>
-				<td><form:errors path="nazwisko" cssStyle="color: red;"></form:errors></td>
-			</tr>
-			<tr>
-				<td><form:label path="adres">adres</form:label></td>
-				<td><form:input path="adres" /></td>
-				<td><form:errors path="adres" cssStyle="color: red;"></form:errors></td>
-
-
-				<td><input type="submit" value="Submit" /></td>
-			</tr>
-		</table>
-	</form:form>
+				<tr>
+					<td><form:label path="nazwisko">nazwisko</form:label></td>
+					<td><form:input path="nazwisko" /></td>
+					<td><form:errors path="nazwisko" cssStyle="color: red;"></form:errors></td>
+				</tr>
+				<tr>
+					<td><form:label path="adres">adres</form:label></td>
+					<td><form:input path="adres" /></td>
+					<td><form:errors path="adres" cssStyle="color: red;"></form:errors></td>
 
 
+					<td><input type="submit" value="Submit" /></td>
+				</tr>
+			</table>
+		</form:form>
+
+</div>
+	</div>
 
 
 </body>
