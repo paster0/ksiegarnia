@@ -3,6 +3,7 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 
 
 
@@ -18,8 +19,8 @@
 
 
 
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Dodanie ksiazki do bazy</title>
 
 
 
@@ -51,12 +52,13 @@
 
 	<form:form action="/ksiegarnia/admin/product/addBook/addimg"
 		enctype="multipart/form-data" method="POST">
-      Please select a file to upload : 
+     <p style="margin-bottom: 5px;"> Wybierz okładke książki:</p> 
       <input type="file" name="file" />
-
-		<input type="submit" value="upload" />
+		<input style="margin-top: 5px;" type="submit" value="upload" />
 	</form:form>
-	<FORM>
+	
+	
+	<FORM style="form-group; margin-top: 5px;">
 		<INPUT Type="button" VALUE="Wstecz"
 			onClick="history.go(-1);return true;">
 	</FORM>

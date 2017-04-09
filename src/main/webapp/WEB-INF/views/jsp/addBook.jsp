@@ -49,16 +49,16 @@
 
 			</div>
 		</div>
-		<div>
+	<div>
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
 					<div class="navbar-header">
 						<a class="navbar-brand" href="#">Nawigacja</a>
 					</div>
 					<ul class="nav navbar-nav">
-						<li><a href="/ksiegarnia">Strona główna</a></li>
-						<li><a href="/ksiegarnia/product">Zobacz książki</a></li>
-						<li><a href="#">O nas</a></li>
+						<li><a href=/ksiegarnia/admin/product>zarządzanie książkami</a></li>
+						<li><a href=/ksiegarnia>zarządzanie zamowieniami</a></li>
+						<li><a href=/ksiegarnia/product>zarzadznie uzytkownikami</a></li>
 					</ul>
 				</div>
 			</nav>
