@@ -13,6 +13,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "zamowienia")
 public class Order {
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", user=" + user + ", orderItem=" + orderItem + ", cena=" + cena + ", uwagi=" + uwagi
+				+ "]";
+	}
+
+
+
 	@Id
 	@GeneratedValue
 	private long id;

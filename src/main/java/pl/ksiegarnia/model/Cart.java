@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Cart {
+	@Override
+	public String toString() {
+		return "Cart [cartId=" + cartId + ", cartItems=" + cartItems + ", grandTotal=" + grandTotal + "]";
+	}
+
 	private String cartId;
 	private Map<String, CartItem> cartItems;
 	private float grandTotal;
