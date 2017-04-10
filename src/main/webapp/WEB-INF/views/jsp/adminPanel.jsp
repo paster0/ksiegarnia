@@ -48,7 +48,7 @@
 					<ul class="nav navbar-nav">
 						<li><a href=/ksiegarnia/admin/product>zarządzanie książkami</a></li>
 						<li><a href=/ksiegarnia>zarządzanie zamowieniami</a></li>
-						<li><a href=/ksiegarnia/product>zarzadznie uzytkownikami</a></li>
+						<li><a href=/ksiegarnia/admin/user>zarzadznie uzytkownikami</a></li>
 					</ul>
 				</div>
 			</nav>
