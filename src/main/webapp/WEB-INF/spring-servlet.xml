@@ -17,7 +17,6 @@
 	
 	<jpa:repositories base-package="pl.ksiegarnia.repository"/>
 	
-	
 	<!-- skanowanie komponentow -->
 	<context:component-scan base-package="pl.ksiegarnia" />
 
@@ -27,10 +26,10 @@
 		p:url="jdbc:mysql://localhost:3306/ksiegarnia" p:driverClassName="com.mysql.jdbc.Driver"
 		p:username="root" p:password="" />
 
-
 	<bean id="JdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<constructor-arg ref="dataSource" />
 	</bean>
+	
 	
 	<tx:annotation-driven />
 	<bean id="entityManagerFactory"

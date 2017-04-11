@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -30,6 +31,16 @@ public class OrderRepositoryImpl implements OrderRepository {
 		}
 		entityManager.persist(order);
 		
+	}
+
+
+
+	@Override	
+	public List<Order> getAllOrders() {
+Query query = entityManager.createQuery("Select o from Order o");
+	List<Order> orders = query.getResultList();
+	
+	return orders;
 	}
 
 }

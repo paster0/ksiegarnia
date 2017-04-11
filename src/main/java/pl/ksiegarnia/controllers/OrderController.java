@@ -1,5 +1,7 @@
 package pl.ksiegarnia.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,20 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import pl.ksiegarnia.model.Cart;
+import pl.ksiegarnia.model.Order;
 import pl.ksiegarnia.model.User;
 import pl.ksiegarnia.service.CartService;
 import pl.ksiegarnia.service.OrderService;
 
 @Controller
-@RequestMapping(value = "/order")
 public class OrderController {
 	@Autowired
 	private CartService cartService;
-
 	@Autowired
 	OrderService service;
 
-	@RequestMapping(value = "")
+	@RequestMapping(value = "/order")
 	public ModelAndView order(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		String id = session.getId();
@@ -45,9 +46,18 @@ public class OrderController {
 			return mav;
 		}
 		ModelAndView mav = new ModelAndView("welcome");
-
+		return mav;
+	}
+	@RequestMapping(value = "/admin/order")
+	public ModelAndView AdminOrder(HttpServletRequest req)
+	{
+		ModelAndView mav = new ModelAndView("adminOrder");
+		List<Order> allOrders = service.getAllOrders();
+		System.out.println(allOrders.toString());
+		
 		return mav;
 
 	}
+	
 
 }

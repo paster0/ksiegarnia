@@ -51,11 +51,19 @@ public class OrderServiceImpl implements OrderService {
 		order.setUser(user);
 		order.setUwagi("brak");
 		order.setCena(cena);
+		order.setAdres(user.getAdres());
+		order.setStatus("oczekujacy");
 		System.out.println(order.toString() + "---------------------------" + oItems.toString());
 		repository.addOrder(order, oItems);
 
 		return true;
 		// repository.addOrder(order, orderItems);
+	}
+
+	@Override
+	public List<Order> getAllOrders() {
+List<Order> allOrders = repository.getAllOrders();
+return allOrders;
 	}
 
 }

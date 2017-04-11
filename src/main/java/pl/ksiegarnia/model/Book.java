@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "ksiazki")
-@XmlRootElement
 public class Book 
 {
 	//test
@@ -74,27 +73,27 @@ public class Book
 	
 	
 	
-	@XmlElement
+//	@XmlElement
 	public int getIdksiazki() {
 		return idksiazki;
 	}
-	@XmlElement
+//	@XmlElement
 	public String getImieautora() {
 		return imieautora;
 	}
-	@XmlElement
+	//@XmlElement
 	public String getNazwiskoautora() {
 		return nazwiskoautora;
 	}
-	@XmlElement
+//	@XmlElement
 	public String getTytul() {
 		return tytul;
 	}
-	@XmlElement
+//	@XmlElement
 	public float getCena() {
 		return cena;
 	}
-	@XmlElement
+	//@XmlElement
 	public int getIlosc() {
 		return ilosc;
 	}

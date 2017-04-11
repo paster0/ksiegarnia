@@ -3,12 +3,16 @@ package pl.ksiegarnia.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "zamowienia")
@@ -24,13 +28,32 @@ public class Order {
 	@Id
 	@GeneratedValue
 	private long id;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private User user;
 	@OneToMany
 	@JoinColumn(name = "zamowienie_id")
 	List<OrderItem> orderItem;
-private double cena;
+    private double cena;
+    private String adres;
+    private String status;
+    
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getAdres() {
+		return adres;
+	}
+
+	public void setAdres(String adres) {
+		this.adres = adres;
+	}
+
 	public double getCena() {
 	return cena;
 }
