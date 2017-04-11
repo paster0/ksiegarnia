@@ -53,7 +53,7 @@ public class OrderController {
 	{
 		ModelAndView mav = new ModelAndView("adminOrder");
 		List<Order> allOrders = service.getAllOrders();
-		System.out.println(allOrders.toString());
+	//	System.out.println(allOrders.toString());
 		
 		return mav;
 

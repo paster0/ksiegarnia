@@ -10,6 +10,10 @@ import javax.persistence.ManyToOne;
 @Entity
 public class OrderItem 
 {
+	public OrderItem() {
+		
+	}
+
 	@Override
 	public String toString() {
 		return "OrderItem [id=" + id + ", ilosc=" + ilosc + ", book=" + book + "]";

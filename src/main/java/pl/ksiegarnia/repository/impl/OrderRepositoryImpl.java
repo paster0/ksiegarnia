@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 
 import pl.ksiegarnia.model.Order;
@@ -19,28 +20,30 @@ public class OrderRepositoryImpl implements OrderRepository {
 	@PersistenceContext
 	EntityManager entityManager;
 
-
-
 	@Override
 	@Transactional
 	public void addOrder(Order order, List<OrderItem> orderItems) {
 
-		for(OrderItem oi : orderItems)
-		{
+		for (OrderItem oi : orderItems) {
 			entityManager.persist(oi);
 		}
 		entityManager.persist(order);
-		
+
 	}
 
-
-
-	@Override	
+	@Override
+	@Transactional
 	public List<Order> getAllOrders() {
-Query query = entityManager.createQuery("Select o from Order o");
-	List<Order> orders = query.getResultList();
-	
-	return orders;
+		Query query = entityManager.createQuery("Select o from Order o");
+		List<Order> orders = query.getResultList();
+for(Order o : orders)
+{
+	Hibernate.initialize(o.getOrderItem());
+}
+		
+		System.out.println(orders.toString());
+		
+		return orders;
 	}
 
 }
