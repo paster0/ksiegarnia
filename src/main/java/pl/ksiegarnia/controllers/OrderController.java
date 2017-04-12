@@ -29,11 +29,9 @@ public class OrderController {
 		String id = session.getId();
 		Cart cart = cartService.read(id);
 		User user = (User) req.getSession().getAttribute("user");
-		if (user != null) 
-		{
+		if (user != null) {
 			boolean allOk = service.addOrder(cart, user);
-			if(allOk==false)
-			{
+			if (allOk == false) {
 				ModelAndView mav = new ModelAndView("cart");
 				String blad = "brak wystarczajacej ilosc produktow na skaldzie";
 				mav.addObject("blad", blad);
@@ -48,16 +46,16 @@ public class OrderController {
 		ModelAndView mav = new ModelAndView("welcome");
 		return mav;
 	}
+
 	@RequestMapping(value = "/admin/order")
-	public ModelAndView AdminOrder(HttpServletRequest req)
-	{
+	public ModelAndView AdminOrder(HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView("adminOrder");
 		List<Order> allOrders = service.getAllOrders();
-	//	System.out.println(allOrders.toString());
-		
+		mav.addObject("list", allOrders);
+		// System.out.println(allOrders.toString());
+
 		return mav;
 
 	}
-	
 
 }

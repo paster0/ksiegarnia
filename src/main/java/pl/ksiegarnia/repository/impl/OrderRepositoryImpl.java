@@ -41,7 +41,6 @@ for(Order o : orders)
 	Hibernate.initialize(o.getOrderItem());
 }
 		
-		System.out.println(orders.toString());
 		
 		return orders;
 	}
