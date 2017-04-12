@@ -17,14 +17,13 @@
 	rel="stylesheet" />
 <script src="<c:url value="/resources/js/jquery-3.2.1.min.js" />"></script>
 <script>
-$(document).ready(function(){
-    $("#hide").click(function(){
-        $("#dane").hide();
-    });
-    $("#show").click(function(){
-        $("#dane").show();
-    });
-});
+	function toggle_visibility(id) {
+		var e = document.getElementById(id);
+		if (e.style.display == 'block')
+			e.style.display = 'none';
+		else
+			e.style.display = 'block';
+	}
 </script>
 
 
@@ -33,6 +32,9 @@ $(document).ready(function(){
 
 </head>
 <body>
+	<button onclick="toggle_visibility('foo');">Click Me</button>
+
+
 
 	<div class="container">
 		<div class="page-header row">
@@ -43,10 +45,7 @@ $(document).ready(function(){
 				</a>
 			</div>
 			<h1 class="text-center jumbotron vertical-center">Ksiegarnia</h1>
-
-
 		</div>
-
 		<div>
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
@@ -73,33 +72,39 @@ $(document).ready(function(){
 				<th>pokaz szczegóły</th>
 			</tr>
 			<c:forEach items="${list}" var="list">
-				<tr>
+				<tr class="table table-striped">
 					<th>${list.id}</th>
 					<td>${list.adres}</td>
 					<td>${list.cena}</td>
 					<td>${list.status}</td>
-					<td><button id="hide">pokaz/ukryj szczegóły</button></td>
+					<td><button id="hide"
+							onclick="toggle_visibility('${list.id}');">pokaz/ukryj
+							szczegóły</button></td>
 				</tr>
+				<div id='${list.id}' style="display: none;">
+					Szczegóły zamówienia
+					<h2>Szczegóły zamówienia nr.${list.id}</h2>
+					</br>
+					<p> Dane klienta: imie: ${list.user.imie} nazwisko: ${list.user.imie}
+					adres: ${list.user.adres} email: ${list.user.email}</p> </br>
+					<h4>Zamówione przedmioty: </h4>
+					
+					<c:forEach items="${list.orderItem}" var="item">
+					${item.ilosc}
+					</c:forEach>
+					
+					
 
-				<table id="details">
-					<div id = "dane">
-						<ul>
-							<li class="list-group-item">Uzytkownik: ${list.user.imie}</li>
-						</ul>
-					</div>
-				</table>
 
-
-
+				</div>
 			</c:forEach>
-
 		</table>
 
 
 
 
 	</div>
-	
+
 
 </body>
 </html>
