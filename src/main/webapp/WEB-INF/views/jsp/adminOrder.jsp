@@ -32,10 +32,6 @@
 
 </head>
 <body>
-	<button onclick="toggle_visibility('foo');">Click Me</button>
-
-
-
 	<div class="container">
 		<div class="page-header row">
 			<div class="pull-left">
@@ -63,6 +59,7 @@
 				</div>
 			</nav>
 		</div>
+		<a href ="/ksiegarnia/admin/order/done">Archiwum zrealizowanych zamowien</a>
 		<table class="table table-striped">
 			<tr>
 				<th>Id zamowienia</th>
@@ -82,18 +79,22 @@
 							szczegóły</button></td>
 				</tr>
 				<div id='${list.id}' style="display: none;">
-					Szczegóły zamówienia
 					<h2>Szczegóły zamówienia nr.${list.id}</h2>
 					</br>
-					<p> Dane klienta: imie: ${list.user.imie} nazwisko: ${list.user.imie}
-					adres: ${list.user.adres} email: ${list.user.email}</p> </br>
-					<h4>Zamówione przedmioty: </h4>
-					
+					<p>Dane klienta: imie: ${list.user.imie} nazwisko:
+						${list.user.imie} adres: ${list.user.adres} email:
+						${list.user.email}</p>
+					</br>
+					<h4>Zamówione przedmioty:</h4>
+
 					<c:forEach items="${list.orderItem}" var="item">
-					${item.ilosc}
+					Tytul książki: ${item.book.tytul},
+					 autor: ${item.book.imieautora} ${item.book.nazwiskoautora},
+					 ilosc sztuk: ${item.ilosc},
+					 cena za sztuke: ${item.book.cena} zł
 					</c:forEach>
-					
-					
+
+
 
 
 				</div>

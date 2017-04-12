@@ -61,9 +61,16 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<Order> getAllOrders() {
-List<Order> allOrders = repository.getAllOrders();
-return allOrders;
+	public List<Order> getNotDoneOrders() {
+List<Order> orders = repository.getNotDoneOrders();
+return orders;
+	}
+
+	@Override
+	public List<Order> getDoneOrders() {
+		List<Order> orders = repository.getDoneOrders();
+
+return orders;
 	}
 
 }

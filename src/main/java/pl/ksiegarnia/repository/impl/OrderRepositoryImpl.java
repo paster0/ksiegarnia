@@ -33,8 +33,8 @@ public class OrderRepositoryImpl implements OrderRepository {
 
 	@Override
 	@Transactional
-	public List<Order> getAllOrders() {
-		Query query = entityManager.createQuery("Select o from Order o");
+	public List<Order> getNotDoneOrders() {
+		Query query = entityManager.createQuery("Select o from Order o where o.status != 'zrealizowane'");
 		List<Order> orders = query.getResultList();
 for(Order o : orders)
 {
@@ -42,6 +42,16 @@ for(Order o : orders)
 }
 		
 		
+		return orders;
+	}
+
+	@Override
+	public List<Order> getDoneOrders() {
+
+		Query query = entityManager.createQuery("Select o from Order o where o.status ='zrealizowane'");
+		List<Order> orders = query.getResultList();
+
+
 		return orders;
 	}
 

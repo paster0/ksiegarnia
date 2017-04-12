@@ -33,7 +33,7 @@ public class OrderController {
 			boolean allOk = service.addOrder(cart, user);
 			if (allOk == false) {
 				ModelAndView mav = new ModelAndView("cart");
-				String blad = "brak wystarczajacej ilosc produktow na skaldzie";
+				String blad = "brak wystarczajacej ilosc produktow na skladzie";
 				mav.addObject("blad", blad);
 				return mav;
 			}
@@ -50,12 +50,21 @@ public class OrderController {
 	@RequestMapping(value = "/admin/order")
 	public ModelAndView AdminOrder(HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView("adminOrder");
-		List<Order> allOrders = service.getAllOrders();
-		mav.addObject("list", allOrders);
+		List<Order> compOrders = service.getNotDoneOrders();
+		mav.addObject("list", compOrders);
 		// System.out.println(allOrders.toString());
 
 		return mav;
 
 	}
+	@RequestMapping(value = "/admin/order/done")
+	public ModelAndView AdminDoneOrder(HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView("adminDoneOrder");
+		List<Order> doneOrders = service.getDoneOrders();
+		mav.addObject("list", doneOrders);
+		// System.out.println(allOrders.toString());
 
+		return mav;
+
+	}
 }

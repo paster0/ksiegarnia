@@ -8,6 +8,7 @@ import pl.ksiegarnia.model.User;
 
 public interface OrderService {
 	public boolean addOrder(Cart cart, User user);
-	public List<Order> getAllOrders();
+	public List<Order> getNotDoneOrders();
+	public List<Order> getDoneOrders();
 
 }

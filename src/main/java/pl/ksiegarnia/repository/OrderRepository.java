@@ -9,5 +9,6 @@ public interface OrderRepository
 {
 
 	public void addOrder(Order order, List<OrderItem> orderItems);
-    public List<Order> getAllOrders();
+    public List<Order> getNotDoneOrders();
+    public List<Order> getDoneOrders();
 }
