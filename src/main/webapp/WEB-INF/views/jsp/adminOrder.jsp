@@ -16,7 +16,7 @@
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" />
 <script src="<c:url value="/resources/js/jquery-3.2.1.min.js" />"></script>
-<script>
+<script type="text/javascript">
 	function toggle_visibility(id) {
 		var e = document.getElementById(id);
 		if (e.style.display == 'block')
@@ -24,6 +24,18 @@
 		else
 			e.style.display = 'block';
 	}
+	
+	
+	
+function ustaw(id, status)
+	{
+	 var temp= status; 
+	    $("#"+id).val(temp);
+
+	};
+	
+	
+	
 </script>
 
 
@@ -32,6 +44,11 @@
 
 </head>
 <body>
+	<td><select id="k">
+			<option value="1">zrealizowane</option>
+			<option value="2">wyslany</option>
+			<option value="3">oczekujacy</option>
+	</select></td>
 	<div class="container">
 		<div class="page-header row">
 			<div class="pull-left">
@@ -59,7 +76,9 @@
 				</div>
 			</nav>
 		</div>
-		<a href ="/ksiegarnia/admin/order/done">Archiwum zrealizowanych zamowien</a>
+
+		<a href="/ksiegarnia/admin/order/done">zrealizowane zamowienia</a>
+
 		<table class="table table-striped">
 			<tr>
 				<th>Id zamowienia</th>
@@ -73,9 +92,15 @@
 					<th>${list.id}</th>
 					<td>${list.adres}</td>
 					<td>${list.cena}</td>
-					<td>${list.status}</td>
-					<td><button id="hide"
-							onclick="toggle_visibility('${list.id}');">pokaz/ukryj
+					<td><select id="${list.id}">
+							<option value="zrealizowane">zrealizowane</option>
+							<option value="wyslany">wyslane</option>
+							<option value="oczekujacy">oczekujace</option>
+
+					</select> <script type="text/javascript">
+				window.onload = ustaw("${list.id}", "${list.status}");
+				</script> <!--  	${list.status} --></td>
+					<td><button id="hide" onclick="toggle_visibility(${list.id});">pokaz/ukryj
 							szczegóły</button></td>
 				</tr>
 				<div id='${list.id}' style="display: none;">
@@ -93,7 +118,6 @@
 					 ilosc sztuk: ${item.ilosc},
 					 cena za sztuke: ${item.book.cena} zł
 					</c:forEach>
-
 
 
 
