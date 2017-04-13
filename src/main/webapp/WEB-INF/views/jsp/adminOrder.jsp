@@ -5,7 +5,7 @@
 
 
 <!DOCTYPE html>
-<html>
+<html ng-app="orderApp">
 <head>
 <meta charset="utf-8" />
 
@@ -16,6 +16,10 @@
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" />
 <script src="<c:url value="/resources/js/jquery-3.2.1.min.js" />"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="<c:url value="/resources/js/orderApp.js" />"></script>
+<script src="<c:url value="/resources/js/orderController.js" />"></script>
 <script type="text/javascript">
 	function toggle_visibility(id) {
 		var e = document.getElementById(id);
@@ -23,10 +27,7 @@
 			e.style.display = 'none';
 		else
 			e.style.display = 'block';
-	}
-	
-	
-	
+	}	
 function ustaw(id, status)
 	{
 	 var temp= status; 
@@ -37,18 +38,10 @@ function ustaw(id, status)
 	
 	
 </script>
-
-
-
 <title>Insert title here</title>
 
 </head>
 <body>
-	<td><select id="k">
-			<option value="1">zrealizowane</option>
-			<option value="2">wyslany</option>
-			<option value="3">oczekujacy</option>
-	</select></td>
 	<div class="container">
 		<div class="page-header row">
 			<div class="pull-left">
@@ -78,7 +71,7 @@ function ustaw(id, status)
 		</div>
 
 		<a href="/ksiegarnia/admin/order/done">zrealizowane zamowienia</a>
-
+<div ng-controller="orderController as cont">
 		<table class="table table-striped">
 			<tr>
 				<th>Id zamowienia</th>
@@ -93,9 +86,9 @@ function ustaw(id, status)
 					<td>${list.adres}</td>
 					<td>${list.cena}</td>
 					<td><select id="${list.id}">
-							<option value="zrealizowane">zrealizowane</option>
-							<option value="wyslany">wyslane</option>
-							<option value="oczekujacy">oczekujace</option>
+							<option value="zrealizowane" ng-change="orderUpdate('${list.id}' , 'zrealizowane')">zrealizowane</option>
+							<option value="wyslany" ng-change="orderUpdate('${list.id}' , 'wyslane')">wyslane</option>
+							<option value="oczekujacy"  ng-change="orderUpdate('${list.id}' , 'oczekujace')">oczekujace</option>
 
 					</select> <script type="text/javascript">
 				window.onload = ustaw("${list.id}", "${list.status}");
@@ -124,7 +117,7 @@ function ustaw(id, status)
 				</div>
 			</c:forEach>
 		</table>
-
+</div>
 
 
 
