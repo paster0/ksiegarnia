@@ -54,5 +54,15 @@ for(Order o : orders)
 
 		return orders;
 	}
+	@Override
+	@Transactional
+	public void updateOrderStatusById(int OrderId, String newStatus) {
+		Query query = entityManager.createQuery("update Order set status = :status "
+		        + "where id = :id");
+		query.setParameter("status", newStatus);
+		long id = Long.valueOf(OrderId);
+		query.setParameter("id", id);
+		query.executeUpdate();		
+	}
 
 }

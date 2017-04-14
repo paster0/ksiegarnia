@@ -75,6 +75,6 @@ public class OrderController {
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
 	public void updateOrder(@PathVariable(value = "id") String id, @PathVariable(value = "status") String status) 
 	{
-		System.out.println("id" + id+ "status"+ status+ "<--- działa");
+	service.updateOrderStatusById(Integer.valueOf(id), status);
 	}
 }

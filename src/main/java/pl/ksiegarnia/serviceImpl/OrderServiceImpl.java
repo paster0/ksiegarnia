@@ -28,14 +28,12 @@ public class OrderServiceImpl implements OrderService {
 		Order order = new Order();
 		List<OrderItem> oItems = new ArrayList<OrderItem>();
 		Map<String, CartItem> cartItems = cart.getCartItems();
-	//	int ii = cartItems.size();
+		// int ii = cartItems.size();
 		for (CartItem cI : cartItems.values()) {
-			
-	//		System.out.println(cartItems.get(String.valueOf(i)));
-			CartItem cartItem =cI;
-			
-			
-			
+
+			// System.out.println(cartItems.get(String.valueOf(i)));
+			CartItem cartItem = cI;
+
 			cena += cartItem.getTotalPrice();
 			OrderItem orderItem = new OrderItem(cartItem.getQuantity(), cartItem.getBook());
 			oItems.add(orderItem);
@@ -62,15 +60,20 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public List<Order> getNotDoneOrders() {
-List<Order> orders = repository.getNotDoneOrders();
-return orders;
+		List<Order> orders = repository.getNotDoneOrders();
+		return orders;
 	}
 
 	@Override
 	public List<Order> getDoneOrders() {
 		List<Order> orders = repository.getDoneOrders();
 
-return orders;
+		return orders;
+	}
+
+	@Override
+	public void updateOrderStatusById(int OrderId, String newStatus) {
+		repository.updateOrderStatusById(OrderId, newStatus);
 	}
 
 }

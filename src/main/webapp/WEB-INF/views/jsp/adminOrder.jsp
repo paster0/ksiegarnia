@@ -21,21 +21,15 @@
 <script src="<c:url value="/resources/js/orderApp.js" />"></script>
 <script src="<c:url value="/resources/js/orderController.js" />"></script>
 <script type="text/javascript">
-	function toggle_visibility(id) {
-		
 
+	function toggle_visibility(id) {
 		var e = document.getElementById(id);
 		if (e.style.display == 'block')
 			e.style.display = 'none';
 		else
 			e.style.display = 'block';
 	}	
-function ustaw(id, status)
-	{
-	 var temp= status; 
-	    $("#"+id).val(temp);
 
-	};
 	
 	
 	
@@ -88,22 +82,29 @@ function ustaw(id, status)
 						<th>${list.id}</th>
 						<td>${list.adres}</td>
 						<td>${list.cena}</td>
-						<td><c:if test="${list.status eq 'zrealizowane'}">
+						<td>
+						
+						
+						<c:if test="${list.status eq 'zrealizowane'}">
 								<c:set var="st" value="${0}" />
 
-							</c:if> <c:if test="${list.status eq 'wyslane'}">
+							</c:if> 
+							
+						<c:if test="${list.status eq 'wyslane'}">
 								<c:set var="st" value="${1}" />
-
-							</c:if> <c:if test="${list.status eq 'oczekujace'}">
+							</c:if> 
+							
+							<c:if test="${list.status eq 'oczekujace'}">
 								<c:set var="st" value="${2}" />
 							</c:if>
 							
 							
-							 <select ng-model="selected${list.id}"
+					<select ng-model="selected${list.id}"
 							ng-options="item for item in status"
 							ng-init="selected${list.id} = status[${st}]">
-
-						</select> <!--  	${list.status} -->
+						</select> 
+						
+						
 							<button ng-click="orderUpdate('${list.id}', selected${list.id})">zmien</button></td>
 						<td>
 						<button id="hide"

@@ -10,5 +10,5 @@ public interface OrderService {
 	public boolean addOrder(Cart cart, User user);
 	public List<Order> getNotDoneOrders();
 	public List<Order> getDoneOrders();
-
+public void updateOrderStatusById(int OrderId, String newStatus);
 }

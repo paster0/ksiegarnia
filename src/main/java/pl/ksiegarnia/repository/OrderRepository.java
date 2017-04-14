@@ -11,4 +11,5 @@ public interface OrderRepository
 	public void addOrder(Order order, List<OrderItem> orderItems);
     public List<Order> getNotDoneOrders();
     public List<Order> getDoneOrders();
+    public void updateOrderStatusById(int OrderId, String newStatus);
 }
