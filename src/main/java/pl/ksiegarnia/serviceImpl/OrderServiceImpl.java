@@ -52,7 +52,7 @@ public class OrderServiceImpl implements OrderService {
 		order.setUwagi("brak");
 		order.setCena(cena);
 		order.setAdres(user.getAdres());
-		order.setStatus("oczekujacy");
+		order.setStatus("oczekujace");
 		System.out.println(order.toString() + "---------------------------" + oItems.toString());
 		repository.addOrder(order, oItems);
 

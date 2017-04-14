@@ -22,6 +22,8 @@
 <script src="<c:url value="/resources/js/orderController.js" />"></script>
 <script type="text/javascript">
 	function toggle_visibility(id) {
+		
+
 		var e = document.getElementById(id);
 		if (e.style.display == 'block')
 			e.style.display = 'none';
@@ -71,53 +73,78 @@ function ustaw(id, status)
 		</div>
 
 		<a href="/ksiegarnia/admin/order/done">zrealizowane zamowienia</a>
-<div ng-controller="orderController as cont">
-		<table class="table table-striped">
-			<tr>
-				<th>Id zamowienia</th>
-				<th>adres</th>
-				<th>cena</th>
-				<th>status</th>
-				<th>pokaz szczegóły</th>
-			</tr>
-			<c:forEach items="${list}" var="list">
-				<tr class="table table-striped">
-					<th>${list.id}</th>
-					<td>${list.adres}</td>
-					<td>${list.cena}</td>
-					<td><select id="${list.id}">
-							<option value="zrealizowane" ng-change="orderUpdate('${list.id}' , 'zrealizowane')">zrealizowane</option>
-							<option value="wyslany" ng-change="orderUpdate('${list.id}' , 'wyslane')">wyslane</option>
-							<option value="oczekujacy"  ng-change="orderUpdate('${list.id}' , 'oczekujace')">oczekujace</option>
-
-					</select> <script type="text/javascript">
-				window.onload = ustaw("${list.id}", "${list.status}");
-				</script> <!--  	${list.status} --></td>
-					<td><button id="hide" onclick="toggle_visibility(${list.id});">pokaz/ukryj
-							szczegóły</button></td>
+		<div ng-controller="orderController as cont">
+			<table class="table table-striped">
+				<tr>
+					<th>Id zamowienia</th>
+					<th>adres</th>
+					<th>cena</th>
+					<th>status</th>
+					<th>pokaz szczegóły</th>
 				</tr>
-				<div id='${list.id}' style="display: none;">
-					<h2>Szczegóły zamówienia nr.${list.id}</h2>
-					</br>
-					<p>Dane klienta: imie: ${list.user.imie} nazwisko:
-						${list.user.imie} adres: ${list.user.adres} email:
-						${list.user.email}</p>
-					</br>
-					<h4>Zamówione przedmioty:</h4>
+				<c:forEach items="${list}" var="list">
 
-					<c:forEach items="${list.orderItem}" var="item">
+					<tr class="table table-striped">
+						<th>${list.id}</th>
+						<td>${list.adres}</td>
+						<td>${list.cena}</td>
+						<td>
+				
+					 <c:if test="${list.status eq 'zrealizowane'}">
+								<c:set var="st" value="${0}" />
+
+							</c:if>
+								 <c:if test="${list.status eq 'wyslane'}">
+								<c:set var="st" value="${1}" />
+
+							</c:if>
+								 <c:if test="${list.status eq 'oczekujace'}">
+								<c:set var="st" value="${2}" />
+
+							</c:if>
+							
+					
+							
+							
+							
+							
+							 <select ng-model="selected${list.id}"	
+							 							ng-options="item for item in status"
+							 
+							ng-init="selected${list.id} = status[${st}]">
+
+						</select> <!--  	${list.status} -->
+							<button ng-click="orderUpdate('${list.id}')">zmien</button></td>
+						<td><button id="hide"
+								onclick="toggle_visibility('d'+${list.id});">pokaz/ukryj
+								szczegóły</button></td>
+					</tr>
+
+
+
+					<div id='d${list.id}' style='display: none;'>
+
+						<h2>Szczegóły zamówienia nr.${list.id}</h2>
+						</br>
+						<p>Dane klienta: imie: ${list.user.imie} nazwisko:
+							${list.user.imie} adres: ${list.user.adres} email:
+							${list.user.email}</p>
+						</br>
+						<h4>Zamówione przedmioty:</h4>
+
+						<c:forEach items="${list.orderItem}" var="item">
 					Tytul książki: ${item.book.tytul},
 					 autor: ${item.book.imieautora} ${item.book.nazwiskoautora},
 					 ilosc sztuk: ${item.ilosc},
 					 cena za sztuke: ${item.book.cena} zł
 					</c:forEach>
-
-
-
-				</div>
-			</c:forEach>
-		</table>
-</div>
+					</div>
+					<!--  		<script type="text/javascript">
+				window.onload = ustaw("selected${list.id}", "${list.status}");
+				</script>-->
+				</c:forEach>
+			</table>
+		</div>
 
 
 
