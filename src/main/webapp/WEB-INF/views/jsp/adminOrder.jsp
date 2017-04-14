@@ -88,34 +88,25 @@ function ustaw(id, status)
 						<th>${list.id}</th>
 						<td>${list.adres}</td>
 						<td>${list.cena}</td>
-						<td>
-				
-					 <c:if test="${list.status eq 'zrealizowane'}">
+						<td><c:if test="${list.status eq 'zrealizowane'}">
 								<c:set var="st" value="${0}" />
 
-							</c:if>
-								 <c:if test="${list.status eq 'wyslane'}">
+							</c:if> <c:if test="${list.status eq 'wyslane'}">
 								<c:set var="st" value="${1}" />
 
-							</c:if>
-								 <c:if test="${list.status eq 'oczekujace'}">
+							</c:if> <c:if test="${list.status eq 'oczekujace'}">
 								<c:set var="st" value="${2}" />
-
 							</c:if>
 							
-					
 							
-							
-							
-							
-							 <select ng-model="selected${list.id}"	
-							 							ng-options="item for item in status"
-							 
+							 <select ng-model="selected${list.id}"
+							ng-options="item for item in status"
 							ng-init="selected${list.id} = status[${st}]">
 
 						</select> <!--  	${list.status} -->
-							<button ng-click="orderUpdate('${list.id}')">zmien</button></td>
-						<td><button id="hide"
+							<button ng-click="orderUpdate('${list.id}', selected${list.id})">zmien</button></td>
+						<td>
+						<button id="hide"
 								onclick="toggle_visibility('d'+${list.id});">pokaz/ukryj
 								szczegóły</button></td>
 					</tr>
