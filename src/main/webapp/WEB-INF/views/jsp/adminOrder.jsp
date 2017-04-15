@@ -82,34 +82,24 @@
 						<th>${list.id}</th>
 						<td>${list.adres}</td>
 						<td>${list.cena}</td>
-						<td>
-						
-						
-						<c:if test="${list.status eq 'zrealizowane'}">
+						<td><c:if test="${list.status eq 'zrealizowane'}">
 								<c:set var="st" value="${0}" />
 
-							</c:if> 
-							
-						<c:if test="${list.status eq 'wyslane'}">
+							</c:if> <c:if test="${list.status eq 'wyslane'}">
 								<c:set var="st" value="${1}" />
-							</c:if> 
-							
-							<c:if test="${list.status eq 'oczekujace'}">
+							</c:if> <c:if test="${list.status eq 'oczekujace'}">
 								<c:set var="st" value="${2}" />
-							</c:if>
-							
-							
-					<select ng-model="selected${list.id}"
+							</c:if> <select ng-model="selected${list.id}"
 							ng-options="item for item in status"
 							ng-init="selected${list.id} = status[${st}]">
-						</select> 
-						
-						
+						</select>
+
+
 							<button ng-click="orderUpdate('${list.id}', selected${list.id})">zmien</button></td>
 						<td>
-						<button id="hide"
-								onclick="toggle_visibility('d'+${list.id});">pokaz/ukryj
-								szczegóły</button></td>
+							<button id="hide" onclick="toggle_visibility('d'+${list.id});">pokaz/ukryj
+								szczegóły</button>
+						</td>
 					</tr>
 
 
@@ -125,11 +115,21 @@
 						<h4>Zamówione przedmioty:</h4>
 
 						<c:forEach items="${list.orderItem}" var="item">
-					Tytul książki: ${item.book.tytul},
-					 autor: ${item.book.imieautora} ${item.book.nazwiskoautora},
-					 ilosc sztuk: ${item.ilosc},
-					 cena za sztuke: ${item.book.cena} zł
-					</c:forEach>
+					  Tytul książki: ${item.book.tytul} </br>
+					 autor: ${item.book.imieautora} ${item.book.nazwiskoautora} </br>
+					 ilosc sztuk: ${item.ilosc} </br>
+					 cena za sztuke: ${item.book.cena} zł </br>
+
+						</c:forEach>
+
+						uwagi: ${cont.uwagi}
+
+						<form>
+							<input type="text" value="${list.uwagi}" ng-model="uwagi" />
+
+
+						</form>
+						</br>
 					</div>
 					<!--  		<script type="text/javascript">
 				window.onload = ustaw("selected${list.id}", "${list.status}");

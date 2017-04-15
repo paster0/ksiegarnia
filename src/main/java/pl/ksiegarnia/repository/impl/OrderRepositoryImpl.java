@@ -46,6 +46,7 @@ for(Order o : orders)
 	}
 
 	@Override
+	@Transactional
 	public List<Order> getDoneOrders() {
 
 		Query query = entityManager.createQuery("Select o from Order o where o.status ='zrealizowane'");
