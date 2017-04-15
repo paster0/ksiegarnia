@@ -36,12 +36,10 @@ public class OrderRepositoryImpl implements OrderRepository {
 	public List<Order> getNotDoneOrders() {
 		Query query = entityManager.createQuery("Select o from Order o where o.status != 'zrealizowane'");
 		List<Order> orders = query.getResultList();
-for(Order o : orders)
-{
-	Hibernate.initialize(o.getOrderItem());
-}
-		
-		
+		for (Order o : orders) {
+			Hibernate.initialize(o.getOrderItem());
+		}
+
 		return orders;
 	}
 
@@ -52,18 +50,101 @@ for(Order o : orders)
 		Query query = entityManager.createQuery("Select o from Order o where o.status ='zrealizowane'");
 		List<Order> orders = query.getResultList();
 
-
 		return orders;
 	}
+
 	@Override
 	@Transactional
 	public void updateOrderStatusById(int OrderId, String newStatus) {
-		Query query = entityManager.createQuery("update Order set status = :status "
-		        + "where id = :id");
+		Query query = entityManager.createQuery("update Order set status = :status " + "where id = :id");
 		query.setParameter("status", newStatus);
 		long id = Long.valueOf(OrderId);
 		query.setParameter("id", id);
-		query.executeUpdate();		
+		query.executeUpdate();
 	}
 
+	@Override
+	@Transactional
+	public void updateCommentStatusById(int OrderId, String newComment)	
+	{
+		Query query = entityManager.createQuery("update Order set uwagi = :uwagi where id = :id");
+		query.setParameter("uwagi", newComment);
+		long id = Long.valueOf(OrderId);
+		query.setParameter("id", OrderId);
+		query.executeUpdate();
+		
+		
+		
+		
+		
+
+	}	
 }
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

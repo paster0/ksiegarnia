@@ -76,8 +76,9 @@
 					<th>status</th>
 					<th>pokaz szczegóły</th>
 				</tr>
-				<c:forEach items="${list}" var="list">
 
+
+				<c:forEach items="${list}" var="list">
 					<tr class="table table-striped">
 						<th>${list.id}</th>
 						<td>${list.adres}</td>
@@ -122,19 +123,19 @@
 
 						</c:forEach>
 
-						uwagi: ${cont.uwagi}
+						uwagi: ${list.uwagi} </br>
 
-						<form>
-							<input type="text" value="${list.uwagi}" ng-model="uwagi" />
-
-
+						<form action="/ksiegarnia/admin/order/updateStatus/uwagi" method="post">
+						
+							<input  type="hidden" name="id" value="${list.id}" />
+							<input type="text" name="uwagi" value="${list.uwagi}" />
+							<input type="submit">
 						</form>
 						</br>
 					</div>
-					<!--  		<script type="text/javascript">
-				window.onload = ustaw("selected${list.id}", "${list.status}");
-				</script>-->
+
 				</c:forEach>
+
 			</table>
 		</div>
 

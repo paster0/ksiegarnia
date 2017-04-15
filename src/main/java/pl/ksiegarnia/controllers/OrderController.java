@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -62,6 +61,7 @@ public class OrderController {
 		return mav;
 
 	}
+
 	@RequestMapping(value = "/admin/order/done")
 	public ModelAndView AdminDoneOrder(HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView("adminDoneOrder");
@@ -70,11 +70,20 @@ public class OrderController {
 		// System.out.println(allOrders.toString());
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/admin/order/updateStatus/{id}/{status}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
-	public void updateOrder(@PathVariable(value = "id") String id, @PathVariable(value = "status") String status) 
-	{
-	service.updateOrderStatusById(Integer.valueOf(id), status);
+	public void updateOrder(@PathVariable(value = "id") String id, @PathVariable(value = "status") String status) {
+		service.updateOrderStatusById(Integer.valueOf(id), status);
 	}
+
+	@RequestMapping(value = "/admin/order/updateStatus/uwagi", method = RequestMethod.POST)
+	public String updateComment(HttpServletRequest req) {
+		String newComment = req.getParameter("uwagi");
+		int OrderId = Integer.valueOf(req.getParameter("id"));
+		service.updateCommentStatusById(OrderId, newComment);
+		
+		return "redirect:/admin/order";
+	}
+
 }
