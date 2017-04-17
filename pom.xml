@@ -11,12 +11,19 @@
 	<dependencies>
 		<!-- DB related dependencies -->
 
-	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-<dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <version>5.1.39</version>
-</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>21.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.39</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
 		<dependency>
@@ -24,16 +31,16 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>4.3.10.Final</version>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
-<dependency>
-    <groupId>org.hibernate</groupId>
-    <artifactId>hibernate-validator</artifactId>
-    <version>5.4.0.Final</version>
-</dependency>
-		
 
-	
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.4.0.Final</version>
+		</dependency>
+
+
+
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -184,7 +191,7 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.5</version>
 		</dependency>
-	
+
 		<!-- https://mvnrepository.com/artifact/com.rometools/rome -->
 		<dependency>
 			<groupId>com.rometools</groupId>
@@ -323,10 +330,16 @@
 			<version>1.5.4</version>
 		</dependency>
 
-	
+
 
 
 		<!-- AOP END -->
+
+
+
+
+
+
 	</dependencies>
 	<build>
 		<finalName>spr-mvc-hib</finalName>

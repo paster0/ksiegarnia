@@ -82,8 +82,17 @@ public class OrderController {
 		String newComment = req.getParameter("uwagi");
 		int OrderId = Integer.valueOf(req.getParameter("id"));
 		service.updateCommentStatusById(OrderId, newComment);
-		
+
 		return "redirect:/admin/order";
+	}
+
+	@RequestMapping(value = "/admin/order/delete", method = RequestMethod.POST)
+	public String deleteOrder(HttpServletRequest req) {
+
+		Long orderId = Long.valueOf(req.getParameter("id"));
+
+		service.deleteOrderById(orderId);
+		return "redirect:/admin/order/done";
 	}
 
 }

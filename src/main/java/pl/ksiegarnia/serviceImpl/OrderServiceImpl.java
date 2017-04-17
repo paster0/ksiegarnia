@@ -81,4 +81,10 @@ public class OrderServiceImpl implements OrderService {
 repository.updateCommentStatusById(OrderId, newComment);		
 	}
 
+	@Override
+	public void deleteOrderById(long orderId) {
+repository.deleteOrderById(orderId);
+		
+	}
+
 }
