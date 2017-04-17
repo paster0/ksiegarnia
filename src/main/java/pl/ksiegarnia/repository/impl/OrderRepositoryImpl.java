@@ -70,7 +70,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 		Query query = entityManager.createQuery("update Order set uwagi = :uwagi where id = :id");
 		query.setParameter("uwagi", newComment);
 		long id = Long.valueOf(OrderId);
-		query.setParameter("id", OrderId);
+		query.setParameter("id", id);
 		query.executeUpdate();
 		
 		

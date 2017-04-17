@@ -17,6 +17,7 @@
 	
 	<jpa:repositories base-package="pl.ksiegarnia.repository"/>
 	
+	
 	<!-- skanowanie komponentow -->
 	<context:component-scan base-package="pl.ksiegarnia" />
 
