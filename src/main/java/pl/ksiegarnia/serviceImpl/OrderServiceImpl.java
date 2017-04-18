@@ -76,4 +76,15 @@ public class OrderServiceImpl implements OrderService {
 		repository.updateOrderStatusById(OrderId, newStatus);
 	}
 
+	@Override
+	public void updateCommentStatusById(int OrderId, String newComment) {
+repository.updateCommentStatusById(OrderId, newComment);		
+	}
+
+	@Override
+	public void deleteOrderById(long orderId) {
+repository.deleteOrderById(orderId);
+		
+	}
+
 }

@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8" />
 
-<!-- 
+<!--
 <spring:url value="/resources/css/welcome.css" var="coreCss" />
 <link href="${coreCss}" rel="stylesheet" />
 <link rel="/resources/css/welcome.css" href="welcome.css"> -->
@@ -21,18 +21,13 @@
 <script src="<c:url value="/resources/js/orderApp.js" />"></script>
 <script src="<c:url value="/resources/js/orderController.js" />"></script>
 <script type="text/javascript">
-
 	function toggle_visibility(id) {
 		var e = document.getElementById(id);
 		if (e.style.display == 'block')
 			e.style.display = 'none';
 		else
 			e.style.display = 'block';
-	}	
-
-	
-	
-	
+	}
 </script>
 <title>Insert title here</title>
 
@@ -66,7 +61,7 @@
 			</nav>
 		</div>
 
-		<a href="/ksiegarnia/admin/order/done">zrealizowane zamowienia</a>
+		<a href="/ksiegarnia/admin/order">niezrealizowane zamowienia</a>
 		<div ng-controller="orderController as cont">
 			<table class="table table-striped">
 				<tr>
@@ -74,11 +69,10 @@
 					<th>adres</th>
 					<th>cena</th>
 					<th>status</th>
-					<th>pokaz szczegóły</th>
+					<th>usun</th>
 				</tr>
-
-
 				<c:forEach items="${list}" var="list">
+
 					<tr class="table table-striped">
 						<th>${list.id}</th>
 						<td>${list.adres}</td>
@@ -96,46 +90,23 @@
 						</select>
 
 
-							<button ng-click="orderUpdate('${list.id}', selected${list.id})">zmien</button></td>
+							<button
+								ng-click="orderUpdate('${list.id}', selected${list.                                                                             id})">zmien</button></td>
+
+
 						<td>
-							<button id="hide" onclick="toggle_visibility('d'+${list.id});">pokaz/ukryj
-								szczegóły</button>
+							<form action="/ksiegarnia/admin/order/delete" method="post">
+								<input type="hidden" name="id" value="${list.id}" /> <input
+									type="submit" value="usun">
+							</form>
 						</td>
 					</tr>
 
 
 
-					<div id='d${list.id}' style='display: none;'>
 
-						<h2>Szczegóły zamówienia nr.${list.id}</h2>
-						</br>
-						<p>Dane klienta: imie: ${list.user.imie} nazwisko:
-							${list.user.imie} adres: ${list.user.adres} email:
-							${list.user.email}</p>
-						</br>
-						<h4>Zamówione przedmioty:</h4>
-
-						<c:forEach items="${list.orderItem}" var="item">
-					  Tytul książki: ${item.book.tytul} </br>
-					 autor: ${item.book.imieautora} ${item.book.nazwiskoautora} </br>
-					 ilosc sztuk: ${item.ilosc} </br>
-					 cena za sztuke: ${item.book.cena} zł </br>
-
-						</c:forEach>
-
-						uwagi: ${list.uwagi} </br>
-
-						<form action="/ksiegarnia/admin/order/updateStatus/uwagi" method="post">
-						
-							<input  type="hidden" name="id" value="${list.id}" />
-							<input type="text" name="uwagi" value="${list.uwagi}" />
-							<input type="submit">
-						</form>
-						</br>
-					</div>
 
 				</c:forEach>
-
 			</table>
 		</div>
 

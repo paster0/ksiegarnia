@@ -12,4 +12,6 @@ public interface OrderRepository
     public List<Order> getNotDoneOrders();
     public List<Order> getDoneOrders();
     public void updateOrderStatusById(int OrderId, String newStatus);
+    public void updateCommentStatusById(int OrderId, String newComment);
+    public void deleteOrderById(long orderId);
 }
