@@ -1,7 +1,5 @@
 <beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:security="http://www.springframework.org/schema/security"
-
-
+	xmlns="http://www.springframework.org/schema/security" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:c="http://www.springframework.org/schema/c" xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
@@ -14,24 +12,28 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-	<security:http auto-config="true">
-		<security:intercept-url pattern="/admin/**"
-			access="ROLE_ADMIN" />
-	</security:http>
+	<http auto-config="true">
+		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
+	</http>
 
-	<security:authentication-manager>
-		<security:authentication-provider>
-			<security:user-service>
-				<security:user name="paster" password="123"
-					authorities="ROLE_ADMIN" />
-			</security:user-service>
-		</security:authentication-provider>
-	</security:authentication-manager>	
+	<!-- JPA, hibernate - start -->
+	<beans:bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:url="jdbc:mysql://localhost:3306/ksiegarnia" p:driverClassName="com.mysql.jdbc.Driver"
+		p:username="root" p:password="" />
 
 	<beans:bean id="encoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 		<beans:constructor-arg name="strength" value="11" />
 	</beans:bean>
+
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT email, haslo, enabled FROM klienci WHERE email=?"
+				authorities-by-username-query="SELECT email, 'ROLE_ADMIN' FROM klienci WHERE email =? " />
+		</authentication-provider>
+	</authentication-manager>
 
 
 </beans:beans>

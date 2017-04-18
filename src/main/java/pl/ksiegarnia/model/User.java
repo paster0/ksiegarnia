@@ -1,9 +1,15 @@
 package pl.ksiegarnia.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -33,8 +39,18 @@ public class User {
 	private String email;
 @NotEmpty(message="pole nie moze byc puste")
 	private String haslo;
+private boolean enabled;
 
-	 @Transient
+
+
+
+	public boolean isEnabled() {
+	return enabled;
+}
+public void setEnabled(boolean enabled) {
+	this.enabled = enabled;
+}
+	@Transient
 	    private String retypeHaslo;
 	 
 	public String getRetypeHaslo() {
