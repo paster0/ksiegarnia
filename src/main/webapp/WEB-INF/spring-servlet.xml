@@ -14,14 +14,15 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 		http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository-1.5.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
-	
-	<jpa:repositories base-package="pl.ksiegarnia.repository"/>
-	
-	
-	<!-- skanowanie komponentow -->
+
+	<!-- paczka z repozytoriami -->
+	<jpa:repositories base-package="pl.ksiegarnia.repository" />
+
+
+	<!-- componnent scan -->
 	<context:component-scan base-package="pl.ksiegarnia" />
 
-	<!-- JPA, hibernate - start -->
+	<!-- spring acces data -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		p:url="jdbc:mysql://localhost:3306/ksiegarnia" p:driverClassName="com.mysql.jdbc.Driver"
@@ -30,9 +31,8 @@
 	<bean id="JdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<constructor-arg ref="dataSource" />
 	</bean>
-	
-	
 	<tx:annotation-driven />
+	<!-- Hibernate -->
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -58,9 +58,11 @@
 	</bean>
 
 
-	<!-- JPA, Hibernate - koniec -->
-
-
+<!-- walidacja -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages" />
+	</bean>
 	<bean id="validator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
 		<property name="validationMessageSource" ref="messageSource" />
@@ -72,12 +74,9 @@
 		validator="validator" />
 
 
-	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basename" value="messages" />
-	</bean>
 
 
+<!-- resolwer widoków -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
@@ -96,8 +95,6 @@
 						<value>.jsp</value>
 					</property>
 				</bean>
-
-
 			</list>
 		</property>
 		<property name="defaultViews">
@@ -127,7 +124,6 @@
 		<property name="ignoreAcceptHeader" value="true" />
 		<property name="useJaf" value="false" />
 		<property name="defaultContentType" value="text/html" />
-
 		<property name="mediaTypes">
 			<map>
 				<!-- <entry key="html" value="text/html" /> -->
@@ -137,13 +133,8 @@
 			</map>
 		</property>
 	</bean>
-	<bean name="logging" class="pl.ksiegarnia.aop.logExecution" />
 
-	<aop:config>
-		<aop:aspect ref="logging">
-			<aop:before method="logExec"
-				pointcut="execution(* pl.ksiegarnia.repository.ProductRepository.get* (**))" />
-		</aop:aspect>
-	</aop:config>
+
+
 
 </beans>

@@ -12,36 +12,48 @@ import pl.ksiegarnia.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
+	private static final String DEFAULT_ROLE = "ROLE_USER";
+
 	@Autowired
 	UserRepository repository;
+
+
 
 	@Override
 	@Transactional
 	public User loggin(String email, String haslo) {
-try{
-		User user = repository.findByEmail(email);
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		boolean matches = passwordEncoder.matches(haslo, user.getHaslo());
-		if (matches) {
+		try {
+			User user = repository.findByEmail(email);
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			boolean matches = passwordEncoder.matches(haslo, user.getHaslo());
+			if (matches) {
 
-		//	System.out.println("znalazlem cie");
-			return user;
-		}}
-catch (Exception e) {
-	return null;
-}
-return null;
-
-		
+				// System.out.println("znalazlem cie");
+				return user;
+			}
+		} catch (Exception e) {
+			return null;
+		}
+		return null;
 
 	}
 
-	/**This method add new user to the Database */
+	/** This method add new user to the Database */
 	@Override
 	public void addUser(User user) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
 		String h = passwordEncoder.encode(user.getHaslo());
 		user.setHaslo(h);
+		repository.save(user);
+
+	}
+
+	@Override
+	public void addWithDefaultRole(User user) {
+		user.setRola(DEFAULT_ROLE);
+		user.setEnabled(true);
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
+		user.setHaslo(passwordEncoder.encode(user.getHaslo()));
 		repository.save(user);
 
 	}

@@ -9,6 +9,8 @@ public User loggin(String email, String haslo);
 /** This method add new user to Database */
 public void addUser(User user);
 
+public void addWithDefaultRole(User user);
+
 	
 	
 }

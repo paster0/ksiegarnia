@@ -1,15 +1,9 @@
 package pl.ksiegarnia.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -41,10 +35,17 @@ public class User {
 	private String haslo;
 private boolean enabled;
 
+private String rola;
 
 
 
-	public boolean isEnabled() {
+public String getRola() {
+	return rola;
+}
+public void setRola(String rola) {
+	this.rola = rola;
+}
+public boolean isEnabled() {
 	return enabled;
 }
 public void setEnabled(boolean enabled) {
