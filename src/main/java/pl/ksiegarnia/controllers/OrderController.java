@@ -57,7 +57,6 @@ public class OrderController {
 		List<Order> compOrders = service.getNotDoneOrders();
 		mav.addObject("list", compOrders);
 		// System.out.println(allOrders.toString());
-
 		return mav;
 
 	}
@@ -88,9 +87,7 @@ public class OrderController {
 
 	@RequestMapping(value = "/admin/order/delete", method = RequestMethod.POST)
 	public String deleteOrder(HttpServletRequest req) {
-
 		Long orderId = Long.valueOf(req.getParameter("id"));
-
 		service.deleteOrderById(orderId);
 		return "redirect:/admin/order/done";
 	}

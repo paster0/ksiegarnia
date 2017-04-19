@@ -33,8 +33,25 @@ public class User {
 	private String email;
 @NotEmpty(message="pole nie moze byc puste")
 	private String haslo;
+private boolean enabled;
 
-	 @Transient
+private String rola;
+
+
+
+public String getRola() {
+	return rola;
+}
+public void setRola(String rola) {
+	this.rola = rola;
+}
+public boolean isEnabled() {
+	return enabled;
+}
+public void setEnabled(boolean enabled) {
+	this.enabled = enabled;
+}
+	@Transient
 	    private String retypeHaslo;
 	 
 	public String getRetypeHaslo() {
