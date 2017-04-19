@@ -100,40 +100,43 @@
 			</c:otherwise>
 			</c:choose>
 		</div>
-
-		<div ng-controller="PController as vm">
+		
+		<div class="row" style="width: 900px"  ng-controller="PController as vm">
 			<c:forEach items="${lista.getBookList()}" var="list">
-				<dl class="dl-horizontal"
-					style="float: left; margin-left: 10px; margin-right: 10px; width: 190px; margin-left: 0;">
+				<div class="col-xs-6 col-md-4">
+					<dl class="dl-horizontal"
+						style="margin-left: 10px; margin-right: 10px; width: 190px; margin-left: 0;">
 
-					<dt style="margin-bottom: 1em; width: auto; padding-right: 1em;">${list.nazwiskoautora}</dt>
+						<dt style="margin-bottom: 1em; width: auto; padding-right: 1em;">${list.nazwiskoautora}</dt>
 
-					<dt>
-						<p style="width: auto; white-space: normal; padding-right: 1em; text-align: left;">${list.tytul}</p>
-					</dt>
-					<dt>
-						<img style="width: 120px; height: 150px;"
-							src='<c:url value="/resources/img/${list.idksiazki}.jpg"></c:url>' />
-					</dt>
+						<dt>
+							<p
+								style="width: auto; white-space: normal; padding-right: 1em; text-align: left;">${list.tytul}</p>
+						</dt>
+						<dt>
+							<img style="width: 120px; height: 150px;"
+								src='<c:url value="/resources/img/${list.idksiazki}.jpg"></c:url>' />
+						</dt>
 
-					<dt>
-						<p>${list.cena}PLN</p>
-					</dt>
-					<dt>
-						<p>ilosc w magazynie: ${list.ilosc}</p>
-						ilość: <input style="width: 70px;" type="text"
-							ng-model="vm.ilosc${list.idksiazki}">
-						{{vm.ilosc${list.idksiazki}}}
-					</dt>
-					<dt>
-						<button style="margin-top: 5px;"
-							ng-click="dodaj('${list.idksiazki}',vm.ilosc${list.idksiazki})">dodaj
-							do koszyka</button>
-					</dt>
-				</dl>
+						<dt>
+							<p>${list.cena}PLN</p>
+						</dt>
+						<dt>
+							<p>ilosc w magazynie: ${list.ilosc}</p>
+							ilość: <input style="width: 70px;" type="text"
+								ng-model="vm.ilosc${list.idksiazki}">
+							{{vm.ilosc${list.idksiazki}}}
+						</dt>
+						<dt>
+							<button style="margin-top: 5px;"
+								ng-click="dodaj('${list.idksiazki}',vm.ilosc${list.idksiazki})">dodaj
+								do koszyka</button>
+						</dt>
+					</dl>
+				</div>
 			</c:forEach>
-		</div>
 
+		</div>
 
 
 

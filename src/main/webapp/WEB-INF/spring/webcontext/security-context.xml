@@ -32,10 +32,6 @@
 			<user-service>
 				<user name="admin" password="123" authorities="ROLE_ADMIN" />
 			</user-service>
-			<password-encoder ref="encoder"></password-encoder>
-			<jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="SELECT email, haslo, enabled FROM klienci WHERE email=?"
-				authorities-by-username-query="SELECT email, rola FROM klienci WHERE email =? " />
 		</authentication-provider>
 	</authentication-manager>
 

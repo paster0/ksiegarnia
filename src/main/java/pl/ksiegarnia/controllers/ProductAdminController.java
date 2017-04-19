@@ -105,7 +105,7 @@ public class ProductAdminController {
 	public ModelAndView updateBookPost(@Valid @ModelAttribute("book") Book book, HttpServletRequest req) {
 		int idksiazki = Integer.valueOf((String) req.getSession().getAttribute("id"));
 		service.updateBook(idksiazki, book);
-		return new ModelAndView("welcome");
+		return new ModelAndView("adminBook");
 	}
 
 }

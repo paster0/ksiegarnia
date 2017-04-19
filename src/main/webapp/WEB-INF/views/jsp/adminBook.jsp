@@ -55,12 +55,10 @@
 			</nav>
 		</div>
 	
-			
 	<a href = "/ksiegarnia/admin/product/addBook">Dodaj ksiazke</a>
-	
 	<div class="row">
 		<c:forEach items="${lista}" var="list">
-			<div class="product" style="float: left; margin-left: 20px;">
+			<div class="col-xs-6 col-md-2" style="float: left; margin-left: 20px;">
 				<h3>${list.nazwiskoautora}</h3>
 				<p>${list.tytul}</p>
 				<img style="width: 120px; height: 150px;"
@@ -79,7 +77,6 @@
 					<input type="hidden" name="id" value="${list.idksiazki}" /> <input
 						type="submit" value="usun"></input>
 				</form>
-
 			</div>
 		</c:forEach>
 	</div>
