@@ -77,6 +77,7 @@
 					<th>pokaz szczegóły</th>
 				</tr>
 
+   
 
 				<c:forEach items="${list}" var="list">
 					<tr class="table table-striped">
