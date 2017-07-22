@@ -8,4 +8,3 @@ To get into admin panel, you should type in Web Adress, "localhost:8080/ksiegarn
 login and password in Spring Security:
 name="admin" password="123" 
 
-I know it is far from clean code, but that was my first amv application.
