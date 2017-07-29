@@ -1,9 +1,15 @@
 package pl.ksiegarnia.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -33,7 +39,19 @@ public class User {
 	private String email;
 @NotEmpty(message="pole nie moze byc puste")
 	private String haslo;
+@OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+private Set<Authority> authorities = new HashSet<>();
+
+
+
+public Set<Authority> getAuthorities() {
+	return authorities;
+}
+public void setAuthorities(Set<Authority> authorities) {
+	this.authorities = authorities;
+}
 private boolean enabled;
+
 
 private String rola;
 

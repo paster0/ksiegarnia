@@ -35,9 +35,9 @@ public class OrderRepositoryImpl implements OrderRepository {
 
 	@Override
 	@Transactional
+	@SuppressWarnings("unchecked")
 	public List<Order> getNotDoneOrders() {
 		Query query = entityManager.createQuery("Select o from Order o where o.status != 'zrealizowane'");
-		
 		List<Order> orders = Lists.newArrayList();
 		
 		orders = query.getResultList();
@@ -51,6 +51,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
 	@Override
 	@Transactional
+	@SuppressWarnings("unchecked")
 	public List<Order> getDoneOrders() {
 
 		Query query = entityManager.createQuery("Select o from Order o where o.status ='zrealizowane'");
