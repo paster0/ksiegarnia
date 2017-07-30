@@ -72,7 +72,7 @@
 			<div class="pull-right">
 				<c:choose>
 					<c:when test="${not empty sessionScope.user}">
-  siema ${user.imie} 
+  Witaj  ${user.imie} 
 <a href="/ksiegarnia/user/logout">Wyloguj sie</a>
 					</c:when>
 					<c:otherwise>

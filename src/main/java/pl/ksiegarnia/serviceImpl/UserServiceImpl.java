@@ -1,10 +1,14 @@
 package pl.ksiegarnia.serviceImpl;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.ksiegarnia.model.Authority;
 import pl.ksiegarnia.model.User;
 import pl.ksiegarnia.repository.UserRepository;
 import pl.ksiegarnia.service.UserService;
@@ -41,9 +45,18 @@ public class UserServiceImpl implements UserService {
 	/** This method add new user to the Database */
 	@Override
 	public void addUser(User user) {
+		
+		
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
 		String h = passwordEncoder.encode(user.getHaslo());
 		user.setHaslo(h);
+		
+		Authority auth = new Authority(user, "ROLE_USER");
+		Set<Authority> authoritySet = new HashSet<Authority>();
+		authoritySet.add(auth);
+		user.setAuthorities(authoritySet);
+		
+		
 		repository.save(user);
 
 	}

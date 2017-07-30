@@ -76,7 +76,7 @@ public class UserController
 		    	return "register";
 		    }
 		
-        service.addWithDefaultRole(user);
+        service.addUser(user);;
 		return "welcome";
 		//return "redirect:/";
 	}

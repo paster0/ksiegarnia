@@ -19,6 +19,8 @@
 
 	<!-- componnent scan -->
 	<context:component-scan base-package="pl.ksiegarnia" />
+	
+	
 
 	<!-- spring acces data -->
 	<bean id="dataSource"
@@ -43,7 +45,7 @@
 		</property>
 		<property name="jpaProperties">
 			<props>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
 	</bean>
@@ -80,7 +82,7 @@
 
 	<bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-		<property name="contentNegotiationManager" ref="contentNegotiationManager" />
+	<!--  	<property name="contentNegotiationManager" ref="contentNegotiationManager" />-->
 		<property name="viewResolvers">
 			<list>
 
@@ -116,6 +118,7 @@
 			</list>
 		</property>
 	</bean>
+	<!-- 
 	<bean id="contentNegotiationManager"
 		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
 		<property name="favorPathExtension" value="true" />
@@ -124,13 +127,13 @@
 		<property name="defaultContentType" value="text/html" />
 		<property name="mediaTypes">
 			<map>
-				<!-- <entry key="html" value="text/html" /> -->
 				<entry key="json" value="application/json" />
 				<entry key="xml" value="application/xml" />
 
 			</map>
 		</property>
 	</bean>
+	 -->
 
 
 

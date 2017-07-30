@@ -4,6 +4,7 @@ import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import pl.ksiegarnia.model.Authority;
 import pl.ksiegarnia.model.User;
@@ -30,7 +31,9 @@ BeanUtils.copyProperties(user, this);
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
+
+	
+		
 		return super.getHaslo();
 	}
 

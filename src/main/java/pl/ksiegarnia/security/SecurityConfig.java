@@ -1,13 +1,18 @@
 package pl.ksiegarnia.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableWebSecurity
+@Configuration
 public class SecurityConfig  extends WebSecurityConfigurerAdapter
 {
 	@Autowired
@@ -16,7 +21,10 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception
 	{
-		auth.userDetailsService(userDetailsService);
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+		
+		  auth.inMemoryAuthentication().withUser("admin").password("123").roles("ADMIN");
+
 	}
 
 	@Override
@@ -27,17 +35,17 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter
 		.csrf()
 		.disable()
 		.authorizeRequests()
-		.antMatchers("/register").permitAll()
-		.antMatchers("/dashboard").permitAll()
-		.antMatchers("/js/**").permitAll()
-		.antMatchers("/css/**").permitAll()
-		.antMatchers("/fonts/**").permitAll()
-		.anyRequest()
-		.authenticated()
+        .antMatchers("/admin/**").access("hasRole('ADMIN')")
+//		.anyRequest()
+//	.authenticated()
 		.and()
 		.formLogin()
-		.loginPage("/login")
-		.defaultSuccessUrl("/dashboard")
+		.defaultSuccessUrl("/admin")
 		.permitAll();
 	}
+	
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder(){
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+		return encoder;}
 }
