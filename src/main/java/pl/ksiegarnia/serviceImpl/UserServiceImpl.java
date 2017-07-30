@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,9 +33,17 @@ public class UserServiceImpl implements UserService {
 			User user = repository.findByEmail(email);
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			boolean matches = passwordEncoder.matches(haslo, user.getHaslo());
+			
+			
+			
+			Authentication authentication =  new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+			SecurityContextHolder.getContext().setAuthentication(authentication);
+			
+			
+			
 			if (matches) {
 
-				// System.out.println("znalazlem cie");
+				// System.out.println("found you");
 				return user;
 			}
 		} catch (Exception e) {
