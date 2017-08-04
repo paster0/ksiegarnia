@@ -1,15 +1,38 @@
 package pl.ksiegarnia.model;
 
+import java.util.Objects;
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 
+
 @Entity
 @Table(name = "ksiazki")
 public class Book 
 {
+	private String uuid = UUID.randomUUID().toString();
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	@Override
+	public int hashCode() {
+
+		return Objects.hash(uuid);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		return this == obj || obj instanceof Book && Objects.equals(uuid, ((Book) obj).uuid);
+	}
+	
+	
 	//test
 	@Override
 	public String toString() {

@@ -1,7 +1,9 @@
 package pl.ksiegarnia.model;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,6 +17,7 @@ import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+
 
 
 
@@ -42,6 +45,24 @@ public class User {
 @OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 private Set<Authority> authorities = new HashSet<>();
 
+
+private String uuid = UUID.randomUUID().toString();
+
+public String getUuid() {
+	return uuid;
+}
+
+@Override
+public int hashCode() {
+
+	return Objects.hash(uuid);
+}
+
+@Override
+public boolean equals(Object obj) {
+
+	return this == obj || obj instanceof User && Objects.equals(uuid, ((User) obj).uuid);
+}
 
 
 public Set<Authority> getAuthorities() {

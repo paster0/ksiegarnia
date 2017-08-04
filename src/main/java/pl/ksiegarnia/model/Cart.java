@@ -2,11 +2,32 @@ package pl.ksiegarnia.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
+
 
 public class Cart {
 	@Override
 	public String toString() {
 		return "Cart [cartId=" + cartId + ", cartItems=" + cartItems + ", grandTotal=" + grandTotal + "]";
+	}
+	
+	private String uuid = UUID.randomUUID().toString();
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	@Override
+	public int hashCode() {
+
+		return Objects.hash(uuid);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		return this == obj || obj instanceof Cart && Objects.equals(uuid, ((Cart) obj).uuid);
 	}
 
 	private String cartId;

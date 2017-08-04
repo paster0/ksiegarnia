@@ -1,5 +1,9 @@
 package pl.ksiegarnia.model;
 
+import java.util.Objects;
+import java.util.UUID;
+
+
 public class CartItem 
 {
 	private Book book;
@@ -14,6 +18,28 @@ public class CartItem
 		this.quantity = 1;
 		this.totalPrice = book.getCena();
 	}
+	
+	
+	private String uuid = UUID.randomUUID().toString();
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	@Override
+	public int hashCode() {
+
+		return Objects.hash(uuid);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		return this == obj || obj instanceof CartItem && Objects.equals(uuid, ((CartItem) obj).uuid);
+	}
+	
+	
+	
 	public Book getBook() {
 		return book;
 	}

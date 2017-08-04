@@ -107,7 +107,6 @@
 						<bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
 							<property name="classesToBeBound">
 								<list>
-									<value>pl.ksiegarnia.model.BookList</value>
 									<value>pl.ksiegarnia.model.Book</value>
 								</list>
 							</property>

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import pl.ksiegarnia.model.Book;
-import pl.ksiegarnia.model.BookList;
 import pl.ksiegarnia.service.ProductUserService;
 
 
@@ -33,8 +32,8 @@ public class ProductUserController {
 	@RequestMapping("")
 	public ModelAndView hellolWorld() {
 		List<Book> list = service.getAll();
-	BookList l = new BookList(list);
-		return new ModelAndView("products", "lista", l);
+	   //BookList l = new BookList(list);
+		return new ModelAndView("products", "lista", list);
 	}
 	
 	@RequestMapping("/rsw")

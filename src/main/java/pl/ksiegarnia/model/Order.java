@@ -1,6 +1,8 @@
 package pl.ksiegarnia.model;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "zamowienia")
 public class Order {
@@ -19,9 +22,6 @@ public class Order {
 		return "Order [id=" + id + ", user=" + user + ", orderItem=" + orderItem + ", cena=" + cena + ", uwagi=" + uwagi
 				+ "]";
 	}
-
-
-
 	@Id
 	@GeneratedValue
 	private long id;
@@ -34,6 +34,25 @@ public class Order {
     private double cena;
     private String adres;
     private String status;
+    
+    
+	private String uuid = UUID.randomUUID().toString();
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	@Override
+	public int hashCode() {
+
+		return Objects.hash(uuid);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		return this == obj || obj instanceof Order && Objects.equals(uuid, ((Order) obj).uuid);
+	}
     
 	public String getStatus() {
 		return status;
