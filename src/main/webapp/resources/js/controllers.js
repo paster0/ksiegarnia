@@ -23,16 +23,17 @@ angular.module('app').controller(
 				{
 					
 					$http.put('/ksiegarnia/rest/cart/add/' + $scope.cartId)
-							.success(function(data)
-
-							{
-							});
+							.success(function(data){})
+					.error(function(data, status) {
+					
+						});
+			
 				}
 
 				$scope.cartId = cartId;
 				$scope.ref($scope.cartId);
 				
-			
+				alert("Dodano");
 			}
 
 			$scope.usun = function(idksiazki, cartId) {

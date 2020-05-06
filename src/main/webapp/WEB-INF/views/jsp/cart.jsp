@@ -118,6 +118,7 @@
 			<form action="/ksiegarnia/order" method="get">
 				<input type="submit" value="Zamawiam" onclick="return confirm('Jestes pewny?')"/>
 			</form>
+			<h1 style="color: red; font-size: 22px;">${blad}</h1>
 
 
 

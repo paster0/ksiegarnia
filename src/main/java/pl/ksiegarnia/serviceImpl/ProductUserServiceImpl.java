@@ -30,7 +30,6 @@ public class ProductUserServiceImpl implements ProductUserService {
 		Collections.sort(allProducts, new Comparator<Book>(){
 	        public int compare(Book b1, Book b2){
 	        	
-	        	
 	                return b1.getNazwiskoautora().compareTo(b2.getNazwiskoautora());
 	        }
 	}

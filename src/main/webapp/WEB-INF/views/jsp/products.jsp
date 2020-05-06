@@ -102,7 +102,7 @@
 		</div>
 		
 		<div class="row" style="width: 900px"  ng-controller="PController as vm">
-			<c:forEach items="${lista.getBookList()}" var="list">
+			<c:forEach items="${lista}" var="list">
 				<div class="col-xs-6 col-md-4">
 					<dl class="dl-horizontal"
 						style="margin-left: 10px; margin-right: 10px; width: 190px; margin-left: 0;">

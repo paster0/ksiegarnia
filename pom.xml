@@ -176,8 +176,6 @@
 		</dependency>
 
 
-
-
 		<!-- Apache Commons FileUpload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -198,14 +196,10 @@
 			<artifactId>rome</artifactId>
 			<version>1.7.1</version>
 		</dependency>
-
-
 		<!-- https://mvnrepository.com/artifact/org.springmodules/spring-modules-validation 
 			<dependency> <groupId>org.springmodules</groupId> <artifactId>spring-modules-validation</artifactId> 
 			<version>0.8</version> </dependency> -->
 		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-frontend-jaxws -->
-
-
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
 		<dependency>
@@ -219,9 +213,6 @@
 			<artifactId>validation-api</artifactId>
 			<version>1.1.0.Final</version>
 		</dependency>
-
-
-
 
 
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
@@ -281,22 +272,14 @@
 			<artifactId>poi</artifactId>
 			<version>3.10-beta2</version>
 		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
 		<!-- LOGGING begin -->
-
-
-
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
 		<!-- LOGGING end -->
-
-
-
-
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -330,13 +313,27 @@
 			<version>1.5.4</version>
 		</dependency>
 
-	
 
+<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.3.0-b170201.1204</version>
+</dependency>
 
+<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
+<dependency>
+    <groupId>javax.activation</groupId>
+    <artifactId>activation</artifactId>
+    <version>1.1</version>
+</dependency>
 
-
-
-
+<!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime -->
+<dependency>
+    <groupId>org.glassfish.jaxb</groupId>
+    <artifactId>jaxb-runtime</artifactId>
+    <version>2.3.0-b170127.1453</version>
+</dependency>
 
 	</dependencies>
 	<build>
