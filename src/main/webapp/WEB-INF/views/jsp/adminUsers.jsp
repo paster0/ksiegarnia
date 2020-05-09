@@ -13,7 +13,7 @@
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>użytkownicy</title>
 </head>
 <body>
 	<div class="container">
@@ -26,19 +26,16 @@
 			</div>
 			<h1 class="text-center jumbotron vertical-center">Ksiegarnia</h1>
 		</div>
-		<div>
+	<div>
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
 					<div class="navbar-header">
 						<a class="navbar-brand" href="#">Nawigacja</a>
 					</div>
 					<ul class="nav navbar-nav">
-						<li><a href=/ksiegarnia/admin/product>zarządzanie
-								książkami</a></li>
-						<li><a href=/ksiegarnia/admin/order>zarządzanie
-								zamowieniami</a></li>
-						<li><a href=/ksiegarnia/admin/user>zarzadznie
-								uzytkownikami</a></li>
+						<li><a href=/ksiegarnia/admin/product>zarządzanie książkami</a></li>
+						<li><a href=/ksiegarnia>zarządzanie zamowieniami</a></li>
+						<li><a href=/ksiegarnia/product>zarządzanie użytkownikami</a></li>
 					</ul>
 				</div>
 			</nav>

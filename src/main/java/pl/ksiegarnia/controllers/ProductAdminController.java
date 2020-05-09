@@ -51,16 +51,11 @@ public class ProductAdminController {
 	{
 		ModelAndView modelAndView = new ModelAndView("addBook");
 		modelAndView.addObject("book", new Book.Builder().build());
-		// modelAndView.addObject("img", "img");
 		return modelAndView;
 	}
 
 	@InitBinder
 	public void dataBinding(WebDataBinder binder, HttpServletRequest req) {
-		// Book book = (Book)req.getSession().getAttribute("book");
-		// binder.validate(book);
-		// binder.addValidators(validator);
-		// binder.setValidator(validator);
 	}
 
 	@RequestMapping(value = "/product/addBook", method = RequestMethod.POST)

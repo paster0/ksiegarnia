@@ -22,25 +22,9 @@
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-
-
-
-
+<title>produkty</title>
 </head>
-<body>
-	
-				${lista.nazwiskoautora}
-				${lista.tytul}	
-			    ${lista.cena}
-				${lista.ilosc}
-			
-
-	
-
-
-
-
-
+<body>${lista.nazwiskoautora} ${lista.tytul} ${lista.cena}
+	${lista.ilosc}
 </body>
 </html>

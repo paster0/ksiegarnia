@@ -67,15 +67,15 @@
 				<p>ilosc: ${list.ilosc}</p>
 				<form action="/ksiegarnia/admin/product/update" method="post">
 					<input type="hidden" name="id" value="${list.idksiazki}" /> <input
-						type="submit" value="zmien dane"></input>
+						type="submit" value="zmień dane"></input>
 				</form>
 				<form action="/ksiegarnia/admin/drop" method="post">
 					<input type="hidden" name="id" value="${list.idksiazki}" /> <input
-						type="submit" value="zmien obrazek"></input>
+						type="submit" value="zmień obrazek"></input>
 				</form>
 				<form action="/ksiegarnia/admin/drop" method="post">
 					<input type="hidden" name="id" value="${list.idksiazki}" /> <input
-						type="submit" value="usun"></input>
+						type="submit" value="usuń"></input>
 				</form>
 			</div>
 		</c:forEach>
