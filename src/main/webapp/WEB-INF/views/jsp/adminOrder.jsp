@@ -34,7 +34,7 @@
 	
 	
 </script>
-<title>Insert title here</title>
+<title>admin panel</title>
 
 </head>
 <body>

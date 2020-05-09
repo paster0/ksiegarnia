@@ -29,7 +29,7 @@
 			e.style.display = 'block';
 	}
 </script>
-<title>Insert title here</title>
+<title>admin panel</title>
 
 </head>
 <body>

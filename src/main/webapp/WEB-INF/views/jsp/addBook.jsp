@@ -21,7 +21,7 @@
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Dodaj książke</title>
 
 
 
@@ -96,7 +96,7 @@
 					<td><form:errors path="ilosc" cssStyle="color: red;"></form:errors></td>
 
 
-					<td><input type="submit" value="Submit" /></td>
+					<td><input type="submit" value="Dodaj" /></td>
 				</tr>
 			</table>
 		</form:form>

@@ -64,7 +64,6 @@
 					<ul class="nav navbar-nav">
 						<li><a href="/ksiegarnia">Strona główna</a></li>
 						<li><a href="/ksiegarnia/product">Zobacz książki</a></li>
-						<li><a href="#">O nas</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -92,7 +91,7 @@
 								<label> <input type="checkbox"> Zapamietaj mnie
 								</label>
 							</div>
-							<button type="submit" class="btn btn-default" value="Login">Submit</button>
+							<button type="submit" class="btn btn-default" value="Login">Zaloguj</button>
 						</form>
 						<td colspan="2">Nie masz konta? <a
 							href="/ksiegarnia/user/reg">Zarejestruj sie</a></td>

@@ -25,27 +25,21 @@ public class OrderRepositoryImpl implements OrderRepository {
 	@Override
 	@Transactional
 	public void addOrder(Order order, List<OrderItem> orderItems) {
-
 		for (OrderItem oi : orderItems) {
 			entityManager.persist(oi);
 		}
 		entityManager.persist(order);
-
 	}
-
 	@Override
 	@Transactional
 	@SuppressWarnings("unchecked")
 	public List<Order> getNotDoneOrders() {
 		Query query = entityManager.createQuery("Select o from Order o where o.status != 'zrealizowane'");
 		List<Order> orders = Lists.newArrayList();
-		
 		orders = query.getResultList();
-		
 		for (Order o : orders) {
 			Hibernate.initialize(o.getOrderItem());
 		}
-
 		return orders;
 	}
 
@@ -53,10 +47,8 @@ public class OrderRepositoryImpl implements OrderRepository {
 	@Transactional
 	@SuppressWarnings("unchecked")
 	public List<Order> getDoneOrders() {
-
 		Query query = entityManager.createQuery("Select o from Order o where o.status ='zrealizowane'");
 		List<Order> orders = query.getResultList();
-
 		return orders;
 	}
 
@@ -70,7 +62,6 @@ public class OrderRepositoryImpl implements OrderRepository {
 		query.setParameter("id", id);
 		query.executeUpdate();
 	}
-
 	@Override
 	@Transactional
 	public void updateCommentStatusById(int OrderId, String newComment)	
@@ -80,14 +71,10 @@ public class OrderRepositoryImpl implements OrderRepository {
 		long id = Long.valueOf(OrderId);
 		query.setParameter("id", id);
 		query.executeUpdate();
-		
-
 	}
-
 	@Override
 	@Transactional
 	public void deleteOrderById(long orderId) {
-
 	Order order = entityManager.find(Order.class, orderId);
 	entityManager.remove(order);
 	
