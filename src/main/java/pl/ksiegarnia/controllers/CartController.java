@@ -20,10 +20,8 @@ public class CartController {
 	@RequestMapping(value = "/{cartId}", method = RequestMethod.GET)
 	public ModelAndView getCart(@PathVariable(value = "cartId") String cartId, Model model) {
 		ModelAndView modelAndView = new ModelAndView("cart");
-
 		modelAndView.addObject("cartId", cartId);
 		modelAndView.addObject("d", "takie zycie");
-
 		return modelAndView;
 	}
 }

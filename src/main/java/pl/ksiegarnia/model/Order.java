@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "zamowienia")
 public class Order {
@@ -22,6 +21,7 @@ public class Order {
 		return "Order [id=" + id + ", user=" + user + ", orderItem=" + orderItem + ", cena=" + cena + ", uwagi=" + uwagi
 				+ "]";
 	}
+
 	@Id
 	@GeneratedValue
 	private long id;
@@ -31,11 +31,10 @@ public class Order {
 	@OneToMany
 	@JoinColumn(name = "zamowienie_id")
 	List<OrderItem> orderItem;
-    private double cena;
-    private String adres;
-    private String status;
-    
-    
+	private double cena;
+	private String adres;
+	private String status;
+
 	private String uuid = UUID.randomUUID().toString();
 
 	public String getUuid() {
@@ -53,7 +52,7 @@ public class Order {
 
 		return this == obj || obj instanceof Order && Objects.equals(uuid, ((Order) obj).uuid);
 	}
-    
+
 	public String getStatus() {
 		return status;
 	}
@@ -71,12 +70,12 @@ public class Order {
 	}
 
 	public double getCena() {
-	return cena;
-}
+		return cena;
+	}
 
-public void setCena(double cena) {
-	this.cena = cena;
-}
+	public void setCena(double cena) {
+		this.cena = cena;
+	}
 
 	public User getUser() {
 		return user;
@@ -85,8 +84,6 @@ public void setCena(double cena) {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-
 
 	private String uwagi;
 

@@ -28,10 +28,8 @@ public class OrderServiceImpl implements OrderService {
 		Order order = new Order();
 		List<OrderItem> oItems = new ArrayList<OrderItem>();
 		Map<String, CartItem> cartItems = cart.getCartItems();
-		// int ii = cartItems.size();
 		for (CartItem cI : cartItems.values()) {
 
-			// System.out.println(cartItems.get(String.valueOf(i)));
 			CartItem cartItem = cI;
 
 			cena += cartItem.getTotalPrice();
@@ -51,11 +49,8 @@ public class OrderServiceImpl implements OrderService {
 		order.setCena(cena);
 		order.setAdres(user.getAdres());
 		order.setStatus("oczekujace");
-		System.out.println(order.toString() + "---------------------------" + oItems.toString());
 		repository.addOrder(order, oItems);
-
 		return true;
-		// repository.addOrder(order, orderItems);
 	}
 
 	@Override
@@ -78,13 +73,13 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public void updateCommentStatusById(int OrderId, String newComment) {
-repository.updateCommentStatusById(OrderId, newComment);		
+		repository.updateCommentStatusById(OrderId, newComment);
 	}
 
 	@Override
 	public void deleteOrderById(long orderId) {
-repository.deleteOrderById(orderId);
-		
+		repository.deleteOrderById(orderId);
+
 	}
 
 }

@@ -42,7 +42,6 @@ public class UserAdminController {
 
 	@RequestMapping(value = "/update/exe", method = RequestMethod.POST)
 	public String saveUpdateUser(@ModelAttribute("uUser") User uUser, HttpServletRequest req) {
-
 		User user = (User) req.getSession().getAttribute("user");
 		user.setEmail(uUser.getEmail());
 		user.setImie(uUser.getImie());
@@ -50,7 +49,6 @@ public class UserAdminController {
 		user.setAdres(uUser.getAdres());
 		service.saveUser(user);
 		req.getSession().removeAttribute("user");
-
 		return "redirect:/admin/user";
 	}
 

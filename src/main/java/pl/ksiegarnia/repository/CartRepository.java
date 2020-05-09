@@ -2,11 +2,13 @@ package pl.ksiegarnia.repository;
 
 import pl.ksiegarnia.model.Cart;
 
-public interface CartRepository
-{
+public interface CartRepository {
 	Cart create(Cart cart);
+
 	Cart read(String cartId);
+
 	void update(String cartId, Cart cart);
+
 	void delete(String cartId);
 
 }

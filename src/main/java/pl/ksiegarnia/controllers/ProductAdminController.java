@@ -31,9 +31,6 @@ public class ProductAdminController {
 	@Autowired
 	ProductUserService uservice;
 
-	// @Autowired
-	// private Validator validator;
-
 	@RequestMapping(value = "")
 	public ModelAndView hellolWorld() {
 
@@ -74,7 +71,6 @@ public class ProductAdminController {
 		}
 		req.getSession().setAttribute("book", book);
 		return "uploadform";
-		// return "redirect:/";
 	}
 
 	@RequestMapping(value = "/product/addBook/addimg", headers = ("content-type=multipart/*"), method = RequestMethod.POST)

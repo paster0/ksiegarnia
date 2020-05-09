@@ -32,10 +32,6 @@ public class UserAdminServiceImpl implements UserAdminService {
 		Query query = entityManager.createQuery("select k from User k where k.email LIKE :email AND k.haslo LIKE :has");
 		query.setParameter("email", "lukasz@gmail.com");
 		query.setParameter("has", "123");
-		// query.setParameter(0, "lukasz@gmail.com");
-		// User res = (User) query.getSingleResult();
-		// System.out.println(res.toString());
-		// quer123");
 		return false;
 	}
 
@@ -54,28 +50,7 @@ public class UserAdminServiceImpl implements UserAdminService {
 
 	@Override
 	public void saveUser(User user) {
-repository.save(user);
-		
-	}
+		repository.save(user);
 
-	/*
-	 * @Override public void method() { EntityManagerFactory
-	 * entityManagerFactory =
-	 * Persistence.createEntityManagerFactory("ksiegarnia"); EntityManager
-	 * entityManager = entityManagerFactory.createEntityManager();
-	 * 
-	 * EntityTransaction transaction = entityManager.getTransaction(); Book book
-	 * = new Book.Builder().tutyl("afryka").imieautora("tomasz").nazwiskoautora(
-	 * "Niegoda") .cena(44).ilosc(23).build();
-	 * 
-	 * transaction.begin(); entityManager.persist(book); transaction.commit();
-	 * 
-	 * 
-	 * entityManager.close(); entityManagerFactory.close();
-	 * 
-	 * 
-	 * 
-	 * }
-	 * 
-	 */
+	}
 }

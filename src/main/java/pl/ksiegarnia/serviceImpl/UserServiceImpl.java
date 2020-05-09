@@ -24,8 +24,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserRepository repository;
 
-
-
 	@Override
 	@Transactional
 	public User loggin(String email, String haslo) {
@@ -33,14 +31,10 @@ public class UserServiceImpl implements UserService {
 			User user = repository.findByEmail(email);
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			boolean matches = passwordEncoder.matches(haslo, user.getHaslo());
-			
-			
-			
-			Authentication authentication =  new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+
+			Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
 			SecurityContextHolder.getContext().setAuthentication(authentication);
-			
-			
-			
+
 			if (matches) {
 
 				// System.out.println("found you");
@@ -56,17 +50,16 @@ public class UserServiceImpl implements UserService {
 	/** This method add new user to the Database */
 	@Override
 	public void addUser(User user) {
-		
-		
+
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
 		String h = passwordEncoder.encode(user.getHaslo());
 		user.setHaslo(h);
-		
+
 		Authority auth = new Authority(user, "ROLE_USER");
 		Set<Authority> authoritySet = new HashSet<Authority>();
 		authoritySet.add(auth);
 		user.setAuthorities(authoritySet);
-		
+
 		repository.save(user);
 
 	}

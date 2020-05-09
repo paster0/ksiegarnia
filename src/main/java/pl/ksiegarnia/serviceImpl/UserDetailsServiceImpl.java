@@ -16,7 +16,7 @@ import pl.ksiegarnia.security.CustomUserDetails;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-	
+
 	@Autowired
 	UserRepository userRepo;
 
@@ -24,11 +24,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
 		User user = userRepo.findByEmail(email);
-		if(user == null)
-			throw new UsernameNotFoundException("User with email: "+email+" not found");
-		
-		
-		
+		if (user == null)
+			throw new UsernameNotFoundException("User with email: " + email + " not found");
+
 		return new CustomUserDetails(user);
 	}
 

@@ -9,13 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
-
 @Entity
-public class OrderItem 
-{
+public class OrderItem {
 	public OrderItem() {
-		
+
 	}
 
 	@Override
@@ -36,7 +33,7 @@ public class OrderItem
 	@ManyToOne
 	@JoinColumn(name = "book_id")
 	Book book;
-	
+
 	private String uuid = UUID.randomUUID().toString();
 
 	public String getUuid() {
@@ -54,7 +51,7 @@ public class OrderItem
 
 		return this == obj || obj instanceof OrderItem && Objects.equals(uuid, ((OrderItem) obj).uuid);
 	}
-	
+
 	public Book getBook() {
 		return book;
 	}
@@ -78,9 +75,5 @@ public class OrderItem
 	public void setId(long id) {
 		this.id = id;
 	}
-
-
-
-	
 
 }

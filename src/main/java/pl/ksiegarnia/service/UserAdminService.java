@@ -9,6 +9,8 @@ public interface UserAdminService {
 	public boolean findUser();
 
 	public List<User> GetuserList();
-public User getUserById(Long id);
-public void saveUser(User user);
+
+	public User getUserById(Long id);
+
+	public void saveUser(User user);
 }

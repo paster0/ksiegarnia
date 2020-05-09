@@ -30,6 +30,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 		}
 		entityManager.persist(order);
 	}
+
 	@Override
 	@Transactional
 	@SuppressWarnings("unchecked")
@@ -62,90 +63,21 @@ public class OrderRepositoryImpl implements OrderRepository {
 		query.setParameter("id", id);
 		query.executeUpdate();
 	}
+
 	@Override
 	@Transactional
-	public void updateCommentStatusById(int OrderId, String newComment)	
-	{
+	public void updateCommentStatusById(int OrderId, String newComment) {
 		Query query = entityManager.createQuery("update Order set uwagi = :uwagi where id = :id");
 		query.setParameter("uwagi", newComment);
 		long id = Long.valueOf(OrderId);
 		query.setParameter("id", id);
 		query.executeUpdate();
 	}
+
 	@Override
 	@Transactional
 	public void deleteOrderById(long orderId) {
-	Order order = entityManager.find(Order.class, orderId);
-	entityManager.remove(order);
-	
-	
-	}	
+		Order order = entityManager.find(Order.class, orderId);
+		entityManager.remove(order);
+	}
 }
-	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

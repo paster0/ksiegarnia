@@ -21,22 +21,18 @@ public class RestProductController {
 
 	@Autowired
 	ProductUserService service;
-	
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Book>> allProducts() {
-        List<Book> allProducts = service.getAll();
-        return ResponseEntity.ok(allProducts);
-    }
-	
-	@RequestMapping(value = "/1",  method = RequestMethod.GET)
-	 public ResponseEntity<Book> get() {
-		
-		Book book = service.getBookbyId(1);
-   	 return new ResponseEntity<Book>(book, new HttpHeaders(), HttpStatus.OK);
 
-    }	
-	
-	
-	
-	
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Book>> allProducts() {
+		List<Book> allProducts = service.getAll();
+		return ResponseEntity.ok(allProducts);
+	}
+
+	@RequestMapping(value = "/1", method = RequestMethod.GET)
+	public ResponseEntity<Book> get() {
+		Book book = service.getBookbyId(1);
+		return new ResponseEntity<Book>(book, new HttpHeaders(), HttpStatus.OK);
+
+	}
+
 }

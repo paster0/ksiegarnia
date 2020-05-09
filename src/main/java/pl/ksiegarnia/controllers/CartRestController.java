@@ -90,7 +90,6 @@ public class CartRestController {
 
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Wewnętrzny błąd serwera.")
-
 	public void handleServerErrors(Exception ex) {
 	}
 

@@ -1,6 +1,5 @@
 package pl.ksiegarnia.serviceImpl;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,27 +14,23 @@ import pl.ksiegarnia.service.ProductUserService;
 
 @Service
 public class ProductUserServiceImpl implements ProductUserService {
-	
+
 	@Autowired
 	ProductRepository repository;
-	
-	public Book getBookbyId(int id)
-	{
+
+	public Book getBookbyId(int id) {
 		return repository.getProductById(id);
 	}
 
 	public List<Book> getAll() {
 		List<Book> allProducts = repository.getAllProducts();
-		//allProducts.sort(id);
-		Collections.sort(allProducts, new Comparator<Book>(){
-	        public int compare(Book b1, Book b2){
-	        	
-	                return b1.getNazwiskoautora().compareTo(b2.getNazwiskoautora());
-	        }
-	}
-		);
-		
-		
+		Collections.sort(allProducts, new Comparator<Book>() {
+			public int compare(Book b1, Book b2) {
+
+				return b1.getNazwiskoautora().compareTo(b2.getNazwiskoautora());
+			}
+		});
+
 		return allProducts;
 	}
 
@@ -91,19 +86,11 @@ public class ProductUserServiceImpl implements ProductUserService {
 			if (!tytul.contains(category)) {
 				FilterProducts.remove(book);
 			}
-
 		}
-
 		return FilterProducts;
-
 	}
-	int dodaj(int a, int b)
-	{
-		return a +b;
+	int dodaj(int a, int b) {
+		return a + b;
 	}
-
-	
-
-	
 
 }

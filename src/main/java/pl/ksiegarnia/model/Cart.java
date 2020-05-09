@@ -5,13 +5,12 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
-
 public class Cart {
 	@Override
 	public String toString() {
 		return "Cart [cartId=" + cartId + ", cartItems=" + cartItems + ", grandTotal=" + grandTotal + "]";
 	}
-	
+
 	private String uuid = UUID.randomUUID().toString();
 
 	public String getUuid() {
@@ -67,11 +66,10 @@ public class Cart {
 		this.grandTotal = grandTotal;
 	}
 
-	public void updateGrandTotal() 
-	{
-		grandTotal=0;
+	public void updateGrandTotal() {
+		grandTotal = 0;
 		for (CartItem item : cartItems.values()) {
-	  //      System.out.println("grandtotal "+ grandTotal+" " + item);
+			// System.out.println("grandtotal "+ grandTotal+" " + item);
 			grandTotal = grandTotal + (item.getTotalPrice());
 		}
 	}
@@ -81,7 +79,7 @@ public class Cart {
 		if (cartItems.containsKey(productId)) {
 			CartItem existingCartItem = cartItems.get(productId);
 			existingCartItem.setQuantity(existingCartItem.getQuantity() + item.getQuantity());
-			existingCartItem.setTotalPrice(existingCartItem.getQuantity()*existingCartItem.getBook().getCena());
+			existingCartItem.setTotalPrice(existingCartItem.getQuantity() * existingCartItem.getBook().getCena());
 			cartItems.put(productId, existingCartItem);
 		} else {
 			cartItems.put(productId, item);
@@ -95,5 +93,4 @@ public class Cart {
 		updateGrandTotal();
 	}
 
-	
 }

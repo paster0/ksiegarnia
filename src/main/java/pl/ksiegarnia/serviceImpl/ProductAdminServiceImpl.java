@@ -35,7 +35,6 @@ public class ProductAdminServiceImpl implements ProductAdminService {
 	@Override
 	public List<Book> getAll() {
 		List<Book> allProducts = repository.getAllProducts();
-		// allProducts.sort(id);
 		Collections.sort(allProducts, new Comparator<Book>() {
 			public int compare(Book b1, Book b2) {
 
