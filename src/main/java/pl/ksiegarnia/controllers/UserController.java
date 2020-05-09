@@ -75,7 +75,8 @@ public class UserController
 		 if(result.hasErrors()) {
 		    	return "register";
 		    }
-		
+			System.out.println("----------------------------------" + user.getImie() + "³³³³");
+
         service.addUser(user);;
 		return "welcome";
 		//return "redirect:/";

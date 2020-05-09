@@ -67,7 +67,6 @@ public class UserServiceImpl implements UserService {
 		authoritySet.add(auth);
 		user.setAuthorities(authoritySet);
 		
-		
 		repository.save(user);
 
 	}
