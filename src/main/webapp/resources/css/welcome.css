@@ -5,9 +5,7 @@ body
 	
 	
 }
-input{
-	margin: 5px;
-}
+
 #TopContainer
 {
 width: 100%;	
@@ -88,4 +86,7 @@ ol > li:FIRST-CHILD {
 {
 	float: left;
 	padding: 10px;
+}
+.changeBook{
+	margin: 5px;
 }

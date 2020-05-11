@@ -70,12 +70,15 @@ public class ProductAdminController {
 
 	@RequestMapping(value = "/product/addBook/addimg", headers = ("content-type=multipart/*"), method = RequestMethod.POST)
 	public String addBook(@RequestParam MultipartFile file, HttpServletRequest req) throws IOException {
-		// System.out.println(file.getOriginalFilename());
 		Book book = (Book) req.getSession().getAttribute("book");
 		service.dodaj(book);
 		String realPatch = req.getSession().getServletContext().getRealPath("");
-		service.addImg(file, book, realPatch);
-		return "redirect:/";
+		
+		
+
+		if(file.getSize()!=0) service.addImg(file, book, realPatch);
+		
+		return "redirect:/admin";
 	}
 
 	@RequestMapping(value = "/product")

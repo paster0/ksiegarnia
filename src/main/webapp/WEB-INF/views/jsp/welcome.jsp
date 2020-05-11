@@ -70,44 +70,59 @@
 			</c:otherwise>
 			</c:choose>
 		</div>
+		<div style="padding-top: 35px;" class="col-md-3 col-xs-12">
 
-		<div class="col-md-6 col-md-offset-3">
-			<h5>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi
-				nisl, cursus in lacus id, vestibulum tempus odio.
-				</h3>
-				<p>Suspendisse potenti. Integer sit amet dapibus leo. Vivamus
-					vitae ex quis magna feugiat suscipit vel eu enim. Quisque eros
-					neque, bibendum sit amet congue ut, feugiat tristique orci.
-					Maecenas nec metus augue. Sed ultrices a dui nec placerat. Donec
-					blandit sapien urna, eu fermentum erat scelerisque et. Duis
-					scelerisque justo vel ultrices dapibus. Nulla hendrerit ultrices
-					pulvinar. Fusce id metus sed turpis posuere condimentum nec sed
-					mauris. Duis imperdiet odio a lobortis tincidunt. Curabitur
-					pellentesque orci nisl, ut auctor enim fermentum ac. Nunc diam
-					turpis, hendrerit ut odio non, mollis porta dolor. Sed egestas
-					lacinia mauris quis cursus. Aliquam orci dui, mollis in volutpat
-					non, molestie vitae neque. Maecenas ullamcorper volutpat enim, a
-					pellentesque lorem cursus suscipit. Proin scelerisque egestas
-					consequat. Proin sed justo sed ante porta volutpat at vel urna. Sed
-					sapien erat, hendrerit sit amet diam in, convallis tempus nulla.
-					Quisque imperdiet elementum convallis. Proin sit amet ligula
-					libero. Suspendisse quis interdum ex. Vestibulum semper dui non
-					nibh posuere, ac tincidunt eros viverra. Maecenas metus urna, porta
-					sit amet pulvinar ac, vehicula vel eros. Integer non leo ut dui
-					imperdiet ultrices in et massa. Cras venenatis facilisis ligula.
-					Proin at cursus felis. Vestibulum porttitor ligula a arcu sodales
-					maximus. Aliquam erat volutpat. Donec interdum erat ex, eu
-					efficitur mi convallis at. Donec interdum maximus justo vitae
-					fermentum. Fusce sit amet risus pharetra arcu auctor rutrum sit
-					amet ultricies turpis. In molestie lectus at ipsum porta, quis
-					semper metus euismod. Pellentesque habitant morbi tristique
-					senectus et netus et malesuada fames ac turpis egestas. Proin id
-					commodo neque. Proin id dui et eros dapibus viverra. Nulla urna
-					ante, tincidunt ac maximus feugiat, rutrum sit amet mauris.
-					Pellentesque pretium lobortis convallis. Maecenas sit amet est at
-					urna sagittis dignissim.</p>
+			<h2>Opinie</h2>
+			<em>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				Donec nisi nisl, cursus in lacus id, vestibulum tempus
+				odio.Suspendisse potenti.</em>
+			<p></p>
+
+			<em>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				Donec nisi nisl, cursus in lacus id, vestibulum tempus
+				odio.Suspendisse potenti.</em>
+
+
+
+
 		</div>
+		<div class="col-md-5 col-xs-12">
+			<h1>Witamy</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+				nisi nisl, cursus in lacus id, vestibulum tempus odio.Suspendisse
+				potenti. Integer sit amet dapibus leo. Vivamus vitae ex quis magna
+				feugiat suscipit vel eu enim. Quisque eros neque, bibendum sit amet
+				congue ut, feugiat tristique orci. Maecenas nec metus augue. Sed
+				ultrices a dui nec placerat. Donec blandit sapien urna, eu fermentum
+				erat scelerisque et. Duis scelerisque justo vel ultrices dapibus.
+				Nulla hendrerit ultrices pulvinar. Fusce id metus sed turpis posuere
+				condimentum nec sed mauris. Duis imperdiet odio a lobortis
+				tincidunt. Curabitur pellentesque orci nisl, ut auctor enim
+				fermentum ac. Nunc diam turpis, hendrerit ut odio non, mollis porta
+				dolor. Sed egestas lacinia mauris quis cursus. Aliquam orci dui,
+				mollis in volutpat non, molestie vitae neque. Maecenas ullamcorper
+				volutpat enim, a pellentesque lorem cursus suscipit. Proin
+				scelerisque egestas consequat. Proin sed justo sed ante porta
+				volutpat at vel urna. Sed sapien erat, hendrerit sit amet diam in,
+				convallis tempus nulla. Quisque imperdiet elementum convallis. Proin
+				sit amet ligula libero. Suspendisse quis interdum ex. Vestibulum
+				semper dui non nibh posuere, ac tincidunt eros viverra. Maecenas
+				metus urna, porta sit amet pulvinar ac, vehicula vel eros. Integer
+				non leo ut dui imperdiet ultrices in et massa. Cras venenatis
+				facilisis ligula. Proin at cursus felis. Vestibulum porttitor ligula
+				a arcu sodales maximus. Aliquam erat volutpat. Donec interdum erat
+				ex, eu efficitur mi convallis at. Donec interdum maximus justo vitae
+				fermentum. Fusce sit amet risus pharetra arcu auctor rutrum sit amet
+				ultricies turpis. In molestie lectus at ipsum porta, quis semper
+				metus euismod. Pellentesque habitant morbi tristique senectus et
+				netus et malesuada fames ac turpis egestas. Proin id commodo neque.
+				Proin id dui et eros dapibus viverra. Nulla urna ante, tincidunt ac
+				maximus feugiat, rutrum sit amet mauris. Pellentesque pretium
+				lobortis convallis. Maecenas sit amet est at urna sagittis
+				dignissim.</p>
+		</div>
+
+
 	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

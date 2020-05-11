@@ -30,15 +30,15 @@
 			</div>
 		</div>
 	<div>
-			<nav class="navbar navbar-default">
+		<nav class="navbar navbar-default">
 				<div class="container-fluid">
 					<div class="navbar-header">
 						<a class="navbar-brand" href="#">Nawigacja</a>
 					</div>
 					<ul class="nav navbar-nav">
 						<li><a href=/ksiegarnia/admin/product>zarządzanie książkami</a></li>
-						<li><a href=/ksiegarnia>zarządzanie zamowieniami</a></li>
-						<li><a href=/ksiegarnia/product>zarządzanie użytkownikami</a></li>
+						<li><a href=/ksiegarnia/admin/order>zarządzanie zamowieniami</a></li>
+						<li><a href=/ksiegarnia/admin/user>zarządzanie użytkownikami</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -67,7 +67,7 @@
 					<td><form:input path="adres" /></td>
 					<td><form:errors path="adres" cssStyle="color: red;"></form:errors></td>
 
-					<td><input type="submit" value="Submit" /></td>
+					<td><input type="submit" value="Zatwierdź" /></td>
 				</tr>
 			</table>
 		</form:form>

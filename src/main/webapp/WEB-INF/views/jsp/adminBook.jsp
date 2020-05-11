@@ -12,21 +12,16 @@
 <head>
 <meta charset="utf-8" />
 
-<!-- 
+
 <spring:url value="/resources/css/welcome.css" var="coreCss" />
 <link href="${coreCss}" rel="stylesheet" />
-<link rel="/resources/css/welcome.css" href="welcome.css"> -->
+<link rel="/resources/css/welcome.css" href="welcome.css">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" />
-
-
-
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>admin panel</title>
-
 </head>
 <body>
-
 	<div class="container">
 		<div class="page-header row">
 			<div class="pull-left">
@@ -36,10 +31,7 @@
 				</a>
 			</div>
 			<h1 class="text-center jumbotron vertical-center">Ksiegarnia</h1>
-
-
 		</div>
-
 		<div>
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
@@ -47,44 +39,45 @@
 						<a class="navbar-brand" href="#">Nawigacja</a>
 					</div>
 					<ul class="nav navbar-nav">
-						<li><a href=/ksiegarnia/admin/product>zarządzanie książkami</a></li>
-						<li><a href=/ksiegarnia/admin/order>zarządzanie zamowieniami</a></li>
-						<li><a href=/ksiegarnia/admin/user>zarzadznie uzytkownikami</a></li>
+						<li><a href=/ksiegarnia/admin/product>zarządzanie
+								książkami</a></li>
+						<li><a href=/ksiegarnia/admin/order>zarządzanie
+								zamowieniami</a></li>
+						<li><a href=/ksiegarnia/admin/user>zarzadznie
+								uzytkownikami</a></li>
 					</ul>
 				</div>
 			</nav>
 		</div>
-	
-	<a href = "/ksiegarnia/admin/product/addBook">Dodaj ksiazke</a>
-	<div class="row">
-		<c:forEach items="${lista}" var="list">
-			<div class="col-xs-6 col-md-2" style="float: left; margin-left: 20px;">
-				<h3>${list.nazwiskoautora}</h3>
-				<p>${list.tytul}</p>
-				<img style="width: 120px; height: 150px;"
-					src='<c:url value="/resources/img/${list.idksiazki}.jpg"></c:url>' />
-				<p>${list.cena}PLN</p>
-				<p>ilosc: ${list.ilosc}</p>
-				<form action="/ksiegarnia/admin/product/update" method="post">
-					<input type="hidden" name="id" value="${list.idksiazki}" /> <input
-						type="submit" value="zmień dane"></input>
-				</form>
-				<form action="/ksiegarnia/admin/drop" method="post">
-					<input type="hidden" name="id" value="${list.idksiazki}" /> <input
-						type="submit" value="zmień obrazek"></input>
-				</form>
-				<form action="/ksiegarnia/admin/drop" method="post">
-					<input type="hidden" name="id" value="${list.idksiazki}" /> <input
-						type="submit" value="usuń"></input>
-				</form>
-			</div>
-		</c:forEach>
+		<a href="/ksiegarnia/admin/product/addBook">Dodaj ksiazke</a>
+		<div class="row">
+			<c:forEach items="${lista}" var="list">
+				<div class="col-xs-6 col-md-2"
+					style="float: left; margin-left: 20px;">
+					<h3>${list.nazwiskoautora}</h3>
+					<p>${list.tytul}</p>
+					<img style="width: 120px; height: 150px;"
+						src='<c:url value="/resources/img/${list.idksiazki}.jpg"></c:url>' />
+					<p>${list.cena}PLN</p>
+					<p>ilosc: ${list.ilosc}</p>
+					<form action="/ksiegarnia/admin/product/update" method="post">
+						<div class="changeBook">
+							<input type="hidden" name="id" value="${list.idksiazki}" /> <input
+								type="submit" value="zmień dane"></input>
+						</div>
+					</form>
+					<form action="/ksiegarnia/admin/product/addBook" method="post">
+
+					</form>
+					<form action="/ksiegarnia/admin/drop" method="post">
+						<div class="changeBook">
+							<input type="hidden" class="changeBook" name="id"
+								value="${list.idksiazki}" /> <input type="submit" value="usuń"></input>
+						</div>
+					</form>
+				</div>
+			</c:forEach>
+		</div>
 	</div>
-
-
-	</div>
-
-
-
 </body>
 </html>
