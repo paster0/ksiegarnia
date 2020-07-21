@@ -69,17 +69,17 @@
 			modelAttribute="book">
 			<table class="table table-hover">
 				<tr>
-					<td><form:label path="tytul">tytul</form:label></td>
+					<td><form:label path="tytul">tytuł</form:label></td>
 					<td><form:input path="tytul" /></td>
 					<td><form:errors path="tytul" cssStyle="color: red;"></form:errors></td>
 				</tr>
 				<tr>
-					<td><form:label path="imieautora">imieautora</form:label></td>
+					<td><form:label path="imieautora">imie autora</form:label></td>
 					<td><form:input path="imieautora" /></td>
 					<td><form:errors path="imieautora" cssStyle="color: red;"></form:errors></td>
 				</tr>
 				<tr>
-					<td><form:label path="nazwiskoautora">nazwiskoautora</form:label></td>
+					<td><form:label path="nazwiskoautora">nazwisko autora</form:label></td>
 					<td><form:input path="nazwiskoautora" /></td>
 					<td><form:errors path="nazwiskoautora" cssStyle="color: red;"></form:errors></td>
 
